@@ -1,0 +1,7 @@
+source ~/.config/nvim/common.vim
+nnoremap <leader>db :action Debug<CR>
+nnoremap <leader>q :action Unsplit<CR>
+
+" No bell sound
+set visualbell
+set noerrorbells

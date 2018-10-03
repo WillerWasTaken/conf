@@ -1,0 +1,14 @@
+[user]
+	email = lchhim@octo.com
+	name = Ly William Chhim
+[alias]
+	co = checkout
+	d = diff
+	dc = diff --cached
+	st = status
+[pager]
+	diff =
+[pull]
+	rebase = true
+[rebase]
+	autoStash = true
