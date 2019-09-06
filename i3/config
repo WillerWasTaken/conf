@@ -14,6 +14,11 @@ set $mod Mod4
 # Browser
 bindsym $mod+b exec --no-startup-id $browser
 
+# Ferdi
+bindsym $mod+Shift+f exec ferdi
+# Spotify
+bindsym $mod+Shift+s exec spotify
+
 # lock
 bindsym $mod+slash exec /usr/local/bin/lock.sh
 
