@@ -42,6 +42,8 @@ colorscheme jellybeans
 " Smart search
 set ignorecase
 set smartcase
+set incsearch
+set hlsearch
 
 " Numbers on the side
 set number
