@@ -87,24 +87,34 @@ source $ZSH/oh-my-zsh.sh
 # CUSTOM
 
 ################## SHELL ################
-# set pager to cat instead of less (default)
+# Set pager to cat instead of less (default)
 export PAGER=less
 
-# set default editor to nvim
-export EDITOR='nvim'
+# Vim as default editor
+export EDITOR='vim'
 
-# set vi mode
+# Vi mode in terminal
 bindkey -v
+# Access vi-mode using jk
+bindkey -M viins 'jk' vi-cmd-mode
 
-# reverse search with C-r
+# Reverse search with C-r
 bindkey '^R' history-incremental-search-backward
 
 ################## ALIAS ################
-alias v=nvim
+alias v=vim
 alias g=git
-alias gps="git stash && git pull --rebase && git stash pop"
-alias gca="git commit --amend --no-edit"
+alias k=kubectl
 alias gitk="gitk --all&"
+alias wttr="curl wttr.in/Paris"
+alias notes="v ~/notes"
+alias -g pingme="; notify-send JOB FINISHED"
+
+################## TOOLS ################
+
+### Have current kube context on Rprompt
+source '/opt/kube-ps1/kube-ps1.sh'
+RPROMPT='$(kube_ps1)'
 
 ################## LANGUAGE ################
 # Java 7
@@ -113,10 +123,6 @@ alias setjava7="sudo archlinux-java set java-7-openjdk/jre"
 alias setjava8="sudo archlinux-java set java-8-openjdk/jre"
 
 export JAVA_HOME=/usr/lib/jvm/default/
-
-# Plenv
-export PATH="$HOME/.plenv/bin:$PATH"
-eval "$(plenv init -)"
 
 # Nvm
 source /usr/share/nvm/init-nvm.sh
@@ -128,3 +134,6 @@ source /usr/bin/virtualenvwrapper.sh
 
 # Gems
 export PATH="$HOME/.gem/ruby/2.5.0/bin:$PATH"
+
+################## PROJECT ################
+# source ~/.zshrc_current_project_name
