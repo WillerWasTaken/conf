@@ -92,10 +92,10 @@ bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
 # split in horizontal orientation
-bindsym $mod+v split h
+bindsym $mod+v split v
 
 # split in vertical orientation
-bindsym $mod+g split v
+bindsym $mod+c split h
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
@@ -129,6 +129,17 @@ bindsym $mod+8 workspace 8
 bindsym $mod+grave workspace 9
 bindsym $mod+Tab workspace 10
 
+# move workspace
+bindsym $mod+y move workspace to output left
+bindsym $mod+o move workspace to output right
+
+# activate VGA left
+bindsym $mod+u exec xrandr --output "HDMI1" --left-of "eDP1" --auto
+# bindsym $mod+u exec xrandr --output "DP1" --left-of "eDP1" --auto
+# deactivate VGA
+bindsym $mod+i exec xrandr --output "HDMI1" --left-of "eDP1" --off
+# bindsym $mod+i exec xrandr --output "DP1" --left-of "eDP1" --off
+
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace 1
 bindsym $mod+Shift+2 move container to workspace 2
@@ -147,6 +158,10 @@ bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+
+# screenshot
+# https://faq.i3wm.org/question/202/what-do-you-guys-use-for-printscreen.1.html
+bindsym $mod+Print exec scrot /tmp/screen.png
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -183,6 +198,7 @@ bar {
 
 # Load network manager applet https://faq.i3wm.org/question/2/how-can-i-use-networkmanager-with-i3.1.html
 exec --no-startup-id nm-applet
+exec --no-startup-id blueman-applet
 
 # Composite windows manager, to allow transparency for instance, see also https://www.reddit.com/r/i3wm/comments/6p40k5/transparency_not_working_in_terminator/
 exec --no-startup-id compton --config ~/.config/i3/compton.conf
