@@ -135,6 +135,10 @@ nnoremap <leader>f :FZF<CR>
 " ### GIT (FUGITIVE) ###
 nnoremap <leader>g :G<CR>
 
+" ### AIRLINE ###
+" Properly display font symbols https://github.com/vim-airline/vim-airline/wiki/FAQ
+let g:airline_powerline_fonts = 1
+
 " ########## LANGUAGE ##########
 " ### GO ###
 " Launch go test
