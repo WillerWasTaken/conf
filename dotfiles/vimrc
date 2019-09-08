@@ -45,6 +45,9 @@ set smartcase
 set incsearch
 set hlsearch
 
+" Show command as it is being typed
+set showcmd
+
 " Numbers on the side
 set number
 set relativenumber
