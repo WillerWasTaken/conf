@@ -1,38 +1,42 @@
-" Install vam
-" git clone https://github.com/MarcWeber/vim-addon-manager ~/.vim/vad
-
 " ########## PLUGINS ##########
-set rtp+=~/.vim/vad
+" Install vimplug Automatically
+" https://github.com/junegunn/vim-plug/wiki/tips#automatic-installation
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
 
-let addons = []
+call plug#begin('~/.vim/plugged')
+
 " gcc to comment
-let addons += ['github:tpope/vim-commentary']
+Plug 'https://github.com/tpope/vim-commentary'
 " Status bar
-let addons += ['github:bling/vim-airline']
+Plug 'https://github.com/bling/vim-airline'
 " Colorscheme
-let addons += ['github:nanotech/jellybeans.vim']
+Plug 'https://github.com/nanotech/jellybeans.vim'
 " Git
-let addons += ['github:tpope/vim-fugitive']
+Plug 'https://github.com/tpope/vim-fugitive'
 " File explorer
-let addons += ['github:scrooloose/nerdtree']
+Plug 'https://github.com/scrooloose/nerdtree'
 " Pane/split navigation between vim and tmux (cf ~/.tmux.conf)
 " https://robots.thoughtbot.com/seamlessly-navigate-vim-and-tmux-splits
-let addons += ['github:christoomey/vim-tmux-navigator']
+Plug 'https://github.com/christoomey/vim-tmux-navigator'
 " Git side markers
-let addons += ['github:airblade/vim-gitgutter']
+Plug 'https://github.com/airblade/vim-gitgutter'
 " Find file
-let addons += ['github:junegunn/fzf']
+Plug 'https://github.com/junegunn/fzf'
 " Search string
-let addons += ['github:mileszs/ack.vim']
+Plug 'https://github.com/mileszs/ack.vim'
 " Surround
-let addons += ['github:tpope/vim-surround']
+Plug 'https://github.com/tpope/vim-surround'
 " Go language
-let addons += ['github:fatih/vim-go']
+Plug 'https://github.com/fatih/vim-go'
 " Navigate between definitions
-let addons += ['github:majutsushi/tagbar']
+Plug 'https://github.com/majutsushi/tagbar'
 
-" Auto update the addons
-call vam#ActivateAddons(addons, {'auto_install' : 1})
+" Initialize plugin system
+call plug#end()
 
 " Syntax highlighting
 syntax on
