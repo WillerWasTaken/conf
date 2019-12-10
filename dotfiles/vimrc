@@ -34,6 +34,10 @@ Plug 'https://github.com/tpope/vim-surround'
 Plug 'https://github.com/fatih/vim-go'
 " Navigate between definitions
 Plug 'https://github.com/majutsushi/tagbar'
+" Terraform syntax highlight
+Plug 'https://github.com/hashivim/vim-terraform'
+" Livedown for markdown preview on port 1337
+Plug 'https://github.com/shime/vim-livedown'
 
 " Initialize plugin system
 call plug#end()
