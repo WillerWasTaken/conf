@@ -55,6 +55,7 @@ bindkey -M viins 'jk' vi-cmd-mode
 bindkey '^R' history-incremental-search-backward
 
 ################## ALIAS ################
+alias ..='cd ..'
 alias ls='ls --color'
 alias la='ls --color -a'
 alias ll='ls --color -l'
