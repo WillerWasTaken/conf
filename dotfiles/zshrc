@@ -60,8 +60,11 @@ bindkey '^R' history-incremental-search-backward
 
 ################## ALIAS ################
 alias ..='cd ..'
+# Set LS_COLORS
+eval `dircolors`
 alias ls='ls --color'
-alias la='ls --color -a'
+alias la='ls --color -la'
+alias l='ls --color -l'
 alias ll='ls --color -l'
 alias grep='grep --color=auto'
 alias v=vim
