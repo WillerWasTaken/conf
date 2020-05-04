@@ -14,8 +14,8 @@ set $mod Mod4
 # Browser
 bindsym $mod+b exec --no-startup-id $browser
 
-# Ferdi
-bindsym $mod+Shift+f exec ferdi
+# Rambox
+bindsym $mod+Shift+a exec rambox
 # Spotify
 bindsym $mod+Shift+s exec spotify
 
