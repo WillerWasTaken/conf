@@ -6,6 +6,10 @@ zplug "themes/agnoster", from:oh-my-zsh
 zplug "plugins/vi-mode", from:oh-my-zsh
 # Automatically launch tmux
 zplug "plugins/tmux", from:oh-my-zsh
+# fish like syntax highlight
+zplug "zsh-users/zsh-syntax-highlighting"
+# fish like auto suggestion
+zplug "zsh-users/zsh-autosuggestions"
 ZSH_TMUX_AUTOCONNECT=false
 ZSH_TMUX_AUTOSTART=true
 
