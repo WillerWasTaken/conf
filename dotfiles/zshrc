@@ -3,7 +3,7 @@ export PATH="$HOME/.local/bin:$PATH"
 
 ZSH_THEME="agnoster"
 
-source /usr/share/zsh/scripts/zplug/init.zsh
+source $HOME/.zplug/init.zsh
 zplug "themes/agnoster", from:oh-my-zsh
 # Vi mode in terminal
 zplug "plugins/vi-mode", from:oh-my-zsh
