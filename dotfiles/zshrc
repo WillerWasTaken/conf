@@ -1,3 +1,6 @@
+# local bin
+export PATH="$HOME/.local/bin:$PATH"
+
 ZSH_THEME="agnoster"
 
 source /usr/share/zsh/scripts/zplug/init.zsh
