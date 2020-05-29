@@ -94,7 +94,11 @@ alias -g pingme="; notify-send JOB FINISHED"
 # FZF
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
+# ROS
+source /opt/ros/melodic/setup.zsh
 
+# Catkin
+source /home/willer/catkin_ws/devel/setup.zsh
 
 ################## PROJECT ################
 # source ~/.zshrc_current_project_name
