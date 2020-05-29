@@ -94,19 +94,7 @@ alias -g pingme="; notify-send JOB FINISHED"
 # FZF
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-################## LANGUAGE ################
-# Java 7
-# FIXME JAVAENV
-alias setjava7="sudo archlinux-java set java-7-openjdk/jre"
-alias setjava8="sudo archlinux-java set java-8-openjdk/jre"
 
-export JAVA_HOME=/usr/lib/jvm/default/
-
-# Nvm
-source /usr/share/nvm/init-nvm.sh
-
-# Gems
-export PATH="$HOME/.gem/ruby/2.5.0/bin:$PATH"
 
 ################## PROJECT ################
 # source ~/.zshrc_current_project_name
