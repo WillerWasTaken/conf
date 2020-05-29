@@ -13,6 +13,10 @@ zplug "plugins/tmux", from:oh-my-zsh
 zplug "zsh-users/zsh-syntax-highlighting"
 # fish like auto suggestion
 zplug "zsh-users/zsh-autosuggestions"
+# Jump to folder with Z
+zplug "plugins/z", from:oh-my-zsh
+# Move folder Ctrl+G
+zplug "andrewferrier/fzf-z"
 ZSH_TMUX_AUTOCONNECT=false
 ZSH_TMUX_AUTOSTART=true
 
@@ -50,6 +54,9 @@ setopt hist_verify            # show command with history expansion to user befo
 setopt inc_append_history     # add commands to HISTFILE in order of execution
 setopt share_history          # share command history data
 
+# Automatically cd and push cd stack
+setopt autocd autopushd pushdignoredups
+
 export PAGER=less
 
 # Vim as default editor
@@ -83,6 +90,9 @@ alias -g pingme="; notify-send JOB FINISHED"
 ### Have current kube context on Rprompt
 # source '/opt/kube-ps1/kube-ps1.sh'
 # RPROMPT='$(kube_ps1)'
+
+# FZF
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 ################## LANGUAGE ################
 # Java 7
