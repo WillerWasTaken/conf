@@ -198,7 +198,7 @@ bindsym $mod+r mode "resize"
 # finds out, if available)
 bar {
         status_command i3status
-        font pango:DejaVu Sans Mono, Icons 8
+        font pango:DejaVu Sans Mono, Icons 12
 }
 
 # Load network manager applet https://faq.i3wm.org/question/2/how-can-i-use-networkmanager-with-i3.1.html
