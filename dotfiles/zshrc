@@ -86,8 +86,9 @@ alias -g pingme="; notify-send JOB FINISHED"
 ################## TOOLS ################
 
 ### Have current kube context on Rprompt
-# source '/opt/kube-ps1/kube-ps1.sh'
-# RPROMPT='$(kube_ps1)'
+source "$HOME/kube-ps1/kube-ps1.sh"
+RPROMPT='$(kube_ps1)'
+KUBE_PS1_BINARY=oc
 
 # FZF
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
