@@ -53,6 +53,8 @@ setopt hist_ignore_space      # ignore commands that start with space
 setopt hist_verify            # show command with history expansion to user before running it
 setopt inc_append_history     # add commands to HISTFILE in order of execution
 setopt share_history          # share command history data
+# Don't store command beginning with a space in history
+setopt HIST_IGNORE_SPACE
 
 # Automatically cd and push cd stack
 setopt autocd autopushd pushdignoredups
