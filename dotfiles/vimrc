@@ -83,6 +83,9 @@ setlocal softtabstop=4
 setlocal shiftwidth=4
 setlocal expandtab
 
+" Display column for the 120th character
+set colorcolumn=120
+
 " Show trailing whitespaces as dashes
 set list
 set listchars=tab:▸\ ,trail:·,extends:>,precedes:<,nbsp:+
@@ -100,7 +103,7 @@ set undodir=~/.vim/undo//
 let mapleader = " "
 
 " Vim configuration manipulation
-nnoremap <leader>ce :tabnew<CR>:e ~/.vimrc<CR>
+nnoremap <leader>ce :tabnew<CR>:lcd ~/conf<CR>:e ~/conf/dotfiles/vimrc<CR>
 nnoremap <leader>cs :source ~/.vimrc<CR>
 
 " Open buffer
