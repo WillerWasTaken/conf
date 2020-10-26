@@ -59,6 +59,9 @@ setopt HIST_IGNORE_SPACE
 # Automatically cd and push cd stack
 setopt autocd autopushd pushdignoredups
 
+# allow to do things like `ls *.png~not-this-file.png`
+setopt extendedglob
+
 export PAGER=less
 
 # Vim as default editor
