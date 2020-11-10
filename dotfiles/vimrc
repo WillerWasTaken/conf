@@ -38,6 +38,8 @@ Plug 'https://github.com/majutsushi/tagbar'
 Plug 'https://github.com/hashivim/vim-terraform'
 " Livedown for markdown preview on port 1337
 Plug 'https://github.com/shime/vim-livedown'
+" Syntax highlight for ansible
+Plug 'https://github.com/pearofducks/ansible-vim'
 
 " Initialize plugin system
 call plug#end()
@@ -155,6 +157,10 @@ nnoremap <leader>g :G<CR>
 " ### AIRLINE ###
 " Properly display font symbols https://github.com/vim-airline/vim-airline/wiki/FAQ
 let g:airline_powerline_fonts = 1
+
+" ### VIM-ANSIBLE ###
+" Reset indentation after two newlines
+let g:ansible_unindent_after_newline = 1
 
 " ########## LANGUAGE ##########
 " ### GO ###
