@@ -33,11 +33,6 @@ zplug load
 
 # zplug clean after plugin removal
 
-source $(pew shell_config)
-alias workon='pew workon'
-alias mkvirtualenv='pew new'
-alias rmvirtualenv='pew rm'
-
 ################## SHELL ################
 
 # History file
@@ -94,6 +89,10 @@ alias -g pingme="; notify-send JOB FINISHED"
 source "$HOME/kube-ps1/kube-ps1.sh"
 RPROMPT='$(kube_ps1)'
 KUBE_PS1_BINARY=oc
+
+# Virtualenvwrapper
+export WORKON_HOME=~/.virtualenvs
+. /usr/local/bin/virtualenvwrapper.sh
 
 # FZF
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
