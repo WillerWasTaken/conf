@@ -3,7 +3,7 @@ export PATH="$PATH:$HOME/.local/bin:$HOME/tools/bin"
 
 ZSH_THEME="agnoster"
 
-source $HOME/.zplug/init.zsh
+source /usr/share/zsh/scripts/zplug/init.zsh
 zplug "themes/agnoster", from:oh-my-zsh
 # Vi mode in terminal
 zplug "plugins/vi-mode", from:oh-my-zsh
@@ -60,7 +60,7 @@ setopt extendedglob
 export PAGER=less
 
 # Vim as default editor
-export EDITOR='vim'
+export EDITOR='nvim'
 
 # Access vi-mode using jk
 bindkey -M viins 'jk' vi-cmd-mode
@@ -77,31 +77,27 @@ alias la='ls --color -la'
 alias l='ls --color -l'
 alias ll='ls --color -l'
 alias grep='grep --color=auto'
-alias v=vim
+alias v=nvim
 alias g=git
 alias k=kubectl
+
+# Get kubectl completion on alias
+compdef __start_kubectl k
 alias gitk="gitk --all&"
 alias -g pingme="; notify-send JOB FINISHED"
 
 ################## TOOLS ################
 
 ### Have current kube context on Rprompt
-source "$HOME/kube-ps1/kube-ps1.sh"
+source /opt/kube-ps1/kube-ps1.sh
 RPROMPT='$(kube_ps1)'
-KUBE_PS1_BINARY=oc
 
 # Virtualenvwrapper
 export WORKON_HOME=~/.virtualenvs
-. /usr/local/bin/virtualenvwrapper.sh
+. /usr/bin/virtualenvwrapper.sh
 
 # FZF
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-# ROS
-source /opt/ros/melodic/setup.zsh
-
-# Catkin
-source /home/willer/catkin_ws/devel/setup.zsh
+[ -f /usr/share/fzf/completion.zsh ] && source /usr/share/fzf/completion.zsh && source /usr/share/fzf/key-bindings.zsh
 
 ################## PROJECT ################
 # source ~/.zshrc_current_project_name
