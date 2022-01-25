@@ -73,12 +73,11 @@ let g:startify_session_dir = '~/.config/nvim/session'
 
 " Handful bookmarks
 let g:startify_bookmarks = [
-            \ { 'v': '~/.config/nvim/init.vim' },
+            \ { 'v': '~/conf/config/nvim/init.vim' },
             \ { 'z': '~/conf/dotfiles/zshrc' },
-            \ { 'i': '~/conf/i3/config' },
+            \ { 'i': '~/conf/config/i3/config' },
             \ { 't': '~/conf/dotfiles/tmux.conf' },
-            \ { 'i': '~/.config/i3/config' },
-            \ '~/proj',
+            \ '~/code',
             \ ]
 
 " Find project root
