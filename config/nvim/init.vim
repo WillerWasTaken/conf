@@ -53,6 +53,10 @@ let mapleader = " "
 nnoremap <leader>ce :tabnew<CR>:lcd ~/conf<CR>:e ~/conf/dotfiles/vimrc<CR>
 nnoremap <leader>cs :source ~/.config/nvim/init.vim<CR>
 
+" Edits
+nnoremap <leader>es :set spell!<CR>
+nnoremap <leader>er :set rnu!<CR>
+
 " Open buffer
 nnoremap <leader>b :buffer 
 
