@@ -40,6 +40,10 @@ Plug 'https://github.com/hashivim/vim-terraform'
 Plug 'https://github.com/shime/vim-livedown'
 " Syntax highlight for ansible
 Plug 'https://github.com/pearofducks/ansible-vim'
+" Replace s usage
+Plug 'https://github.com/justinmk/vim-sneak'
+" Live preview on replace
+Plug 'https://github.com/markonm/traces.vim'
 
 " Initialize plugin system
 call plug#end()
@@ -78,6 +82,9 @@ inoremap <C-v> <C-o>"+p
 " More natural split order
 set splitbelow
 set splitright
+
+" keep 5 lines at least between the cursor and the end of the buffer
+set scrolloff=5
 
 " Default indentation when no filetype is detected
 setlocal tabstop=4
@@ -153,6 +160,9 @@ nnoremap <leader>f :FZF<CR>
 
 " ### GIT (FUGITIVE) ###
 nnoremap <leader>g :G<CR>
+
+" ### Sneak ###
+let g:sneak#label = 1
 
 " ### AIRLINE ###
 " Properly display font symbols https://github.com/vim-airline/vim-airline/wiki/FAQ
