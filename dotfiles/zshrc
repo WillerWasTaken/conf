@@ -17,6 +17,7 @@ zplug "zsh-users/zsh-autosuggestions"
 zplug "plugins/z", from:oh-my-zsh
 # Move folder Ctrl+G
 zplug "andrewferrier/fzf-z"
+zplug "plugins/kube-ps1", from:oh-my-zsh
 ASDF_DIR="$HOME/tools/asdf"
 zplug "plugins/asdf", from:oh-my-zsh
 ZSH_TMUX_AUTOCONNECT=false
@@ -91,7 +92,6 @@ alias -g pingme="; notify-send JOB FINISHED"
 ################## TOOLS ################
 
 ### Have current kube context on Rprompt
-source /opt/kube-ps1/kube-ps1.sh
 RPROMPT='$(kube_ps1)'
 
 # Virtualenvwrapper
