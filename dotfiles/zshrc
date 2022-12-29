@@ -3,7 +3,7 @@ export PATH="$PATH:$HOME/.local/bin:$HOME/tools/bin"
 
 ZSH_THEME="agnoster"
 
-source /usr/share/zsh/scripts/zplug/init.zsh
+source $HOME/.zplug/init.zsh
 zplug "themes/agnoster", from:oh-my-zsh
 # Vi mode in terminal
 zplug "plugins/vi-mode", from:oh-my-zsh
@@ -17,6 +17,8 @@ zplug "zsh-users/zsh-autosuggestions"
 zplug "plugins/z", from:oh-my-zsh
 # Move folder Ctrl+G
 zplug "andrewferrier/fzf-z"
+ASDF_DIR="$HOME/tools/asdf"
+zplug "plugins/asdf", from:oh-my-zsh
 ZSH_TMUX_AUTOCONNECT=false
 ZSH_TMUX_AUTOSTART=true
 
@@ -95,6 +97,12 @@ RPROMPT='$(kube_ps1)'
 # Virtualenvwrapper
 export WORKON_HOME=~/.virtualenvs
 . /usr/bin/virtualenvwrapper.sh
+# ASDF
+# append completions to fpath
+fpath=(${ASDF_DIR}/completions $fpath)
+# initialise completions with ZSH's compinit
+autoload -Uz compinit && compinit
+
 
 # FZF
 [ -f /usr/share/fzf/completion.zsh ] && source /usr/share/fzf/completion.zsh && source /usr/share/fzf/key-bindings.zsh
