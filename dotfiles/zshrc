@@ -86,6 +86,7 @@ alias k=kubectl
 alias asl='aws sso login'
 
 # Get kubectl completion on alias
+source <(kubectl completion zsh)
 compdef __start_kubectl k
 alias gitk="gitk --all&"
 alias -g pingme="; notify-send JOB FINISHED"
