@@ -83,6 +83,7 @@ alias grep='grep --color=auto'
 alias v=vim
 alias g=git
 alias k=kubectl
+alias asl='aws sso login'
 
 # Get kubectl completion on alias
 compdef __start_kubectl k
