@@ -172,6 +172,13 @@ let g:airline_powerline_fonts = 1
 " Reset indentation after two newlines
 let g:ansible_unindent_after_newline = 1
 
+" ### VIM-TERRAFORM ###
+" Format on save
+let g:terraform_align = 1
+let g:terraform_fmt_on_save = 1
+let g:terraform_binary_path = '/home/willer/.asdf/shims/terraform'
+autocmd BufWritePre *.hcl call terraform#fmt()
+
 " ########## LANGUAGE ##########
 " ### GO ###
 " Launch go test
