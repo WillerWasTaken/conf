@@ -8,7 +8,8 @@ fi
 # local bin
 export PATH="$PATH:$HOME/.local/bin:$HOME/tools/bin"
 
-source $HOME/.zplug/init.zsh
+# source $HOME/.zplug/init.zsh
+source $ZPLUG_DIR/share/zplug/init.zsh
 # Main theme
 zplug "romkatv/powerlevel10k", as:theme, depth:1
 # Vi mode in terminal
@@ -99,12 +100,6 @@ alias -g pingme="; notify-send JOB FINISHED"
 
 ################## TOOLS ################
 
-### Have current kube context on Rprompt
-RPROMPT='$(kube_ps1)'
-
-# Virtualenvwrapper
-export WORKON_HOME=~/.virtualenvs
-. /usr/bin/virtualenvwrapper.sh
 # ASDF
 # append completions to fpath
 fpath=(${ASDF_DIR}/completions $fpath)
