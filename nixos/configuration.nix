@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, callPackage, ... }:
+{ config, pkgs, ... }:
 
 {
   imports =
@@ -108,16 +108,11 @@
     shell = pkgs.zsh;
     description = "Willer";
     extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [
-      firefox
-    ];
+    packages = with pkgs; [];
   };
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
-
-  # virtualisation.virtualbox.guest.enable = true;
-  # virtualisation.virtualbox.guest.x11 = true;
 
   nixpkgs.config.permittedInsecurePackages = [
     "nodejs-14.21.3"
@@ -127,37 +122,32 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-   vim_configurable
-   wget
-   tldr
-   terminator
-   gitFull
-   polybar
-   tmux
-   nodejs_14
-   yarn
-   nodePackages.expo-cli
-   android-tools
-   watchman
-   # python3Full
-   python38
-   # (python38.withPackages(ps: with ps; [ requests]))
-   zplug
-   xsel
-   terraform
-   terragrunt
-   kubectl
-   # For polybar script
-   # python310Packages.pydbus
+    vim_configurable
+    wget
+    pavucontrol
+    tldr
+    terminator
+    firefox
+    gitFull
+    polybarFull
+    tmux
+    nodejs_14
+    yarn
+    nodePackages.expo-cli
+    android-tools
+    watchman
+    ngrok
+    ripgrep
+    zplug
+    xsel
+    terraform
+    terragrunt
+    kubectl
   ];
 
   fonts.fonts = with pkgs; [
     nerdfonts
   ];
-
-  # For i3
-  # links /libexec from derivations to /run/current-system/sw 
-  environment.pathsToLink = [ "/libexec" ];
 
   programs.zsh = {
     enable = true;
