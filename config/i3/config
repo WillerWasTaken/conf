@@ -68,9 +68,9 @@ bindsym $mod+d exec dmenu_run
 # bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
 # sound
-bindsym XF86AudioRaiseVolume exec amixer -D pulse sset Master 3%+ unmute
-bindsym XF86AudioLowerVolume exec amixer -D pulse sset Master 3%- unmute
-bindsym XF86AudioMute exec amixer -D pulse sset Master mute
+bindsym XF86AudioRaiseVolume exec pamixer -i 3 -u
+bindsym XF86AudioLowerVolume exec pamixer -d 3 -u
+bindsym XF86AudioMute exec pamixer -m
 
 # change focus
 bindsym $mod+h focus left
