@@ -42,6 +42,10 @@ Plug 'https://github.com/shime/vim-livedown'
 Plug 'https://github.com/pearofducks/ansible-vim'
 " Replace s usage
 Plug 'https://github.com/justinmk/vim-sneak'
+" Indentation marks
+Plug 'https://github.com/Yggdroot/indentLine'
+" Yaml folds
+Plug 'https://github.com/pedrohdz/vim-yaml-folds'
 " Live preview on replace
 Plug 'https://github.com/markonm/traces.vim'
 
@@ -106,6 +110,10 @@ set undoreload=10000
 set backupdir=~/.vim/backup//
 set directory=~/.vim/swap//
 set undodir=~/.vim/undo//
+
+" Yaml handling
+autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab foldmethod=indent
+let g:indentLine_char = '⦙'
 
 " ########## GENERAL SHORTCUTS ##########
 " Leader on space
