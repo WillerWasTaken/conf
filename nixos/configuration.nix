@@ -33,6 +33,10 @@
   # Enable networking
   networking.networkmanager.enable = true;
 
+  # Enable bluetooth
+  hardware.bluetooth.enable = true;
+  services.blueman.enable = true;
+
   # Set your time zone.
   time.timeZone = "Europe/Paris";
 
@@ -122,6 +126,14 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
+    # REMOVE
+    nodejs_14
+    yarn
+    nodePackages.expo-cli
+    android-tools
+    android-studio
+    watchman
+    # REMOVE
     vim_configurable
     wget
     pavucontrol
@@ -131,18 +143,25 @@
     gitFull
     polybarFull
     tmux
-    nodejs_14
-    yarn
-    nodePackages.expo-cli
-    android-tools
-    watchman
-    ngrok
     ripgrep
     zplug
     xsel
     terraform
     terragrunt
     kubectl
+    kubectx
+    rambox
+    kubernetes-helm
+    kind
+    magic-wormhole
+    wireguard-tools
+    k9s
+    imagemagick
+    scrot
+    pamixer
+    arandr
+    spotify
+    htop
   ];
 
   fonts.fonts = with pkgs; [
@@ -152,6 +171,24 @@
   programs.zsh = {
     enable = true;
     interactiveShellInit = "export ZPLUG_DIR=${pkgs.zplug}";
+  };
+
+  programs.nm-applet.enable = true;
+
+  virtualisation = {
+    podman = {
+      enable = true;
+
+      # Create a `docker` alias for podman, to use it as a drop-in replacement
+      dockerCompat = true;
+
+      # Required for containers under podman-compose to be able to talk to each other.
+      defaultNetwork.settings.dns_enabled = true;
+      # For Nixos version > 22.11
+      #defaultNetwork.settings = {
+      #  dns_enabled = true;
+      #};
+    };
   };
 
   # Some programs need SUID wrappers, can be configured further or are
