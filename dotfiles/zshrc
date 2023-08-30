@@ -23,7 +23,6 @@ zplug "zsh-users/zsh-autosuggestions"
 zplug "plugins/z", from:oh-my-zsh
 # Move folder Ctrl+G
 zplug "andrewferrier/fzf-z"
-zplug "plugins/kube-ps1", from:oh-my-zsh
 ASDF_DIR="$HOME/tools/asdf"
 zplug "plugins/asdf", from:oh-my-zsh
 ZSH_TMUX_AUTOCONNECT=false
@@ -120,6 +119,10 @@ export TF_PLUGIN_CACHE_DIR="$HOME/.terraform.d/plugin-cache"
 
 # FZF
 [ -f /usr/share/fzf/completion.zsh ] && source /usr/share/fzf/completion.zsh && source /usr/share/fzf/key-bindings.zsh
+
+# Kubernetes
+# https://gdevops.gitlab.io/tuto_kubernetes/docs/tools/kubectl_aliases/kubectl_aliases.html
+[ -f ~/.kubectl_aliases ] && source ~/.kubectl_aliases
 
 ################## PROJECT ################
 # source ~/.zshrc_current_project_name
