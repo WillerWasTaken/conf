@@ -55,6 +55,11 @@
     LC_TIME = "fr_FR.UTF-8";
   };
 
+  # Enable device mounting
+  services.devmon.enable = true;
+  services.gvfs.enable = true;
+  services.udisks2.enable = true;
+
   # Configure keymap in X11
   services.xserver = {
     layout = "us";
