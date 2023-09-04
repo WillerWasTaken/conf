@@ -183,6 +183,7 @@
   };
 
   programs.nm-applet.enable = true;
+  programs.thunar.enable = true;
 
   virtualisation = {
     podman = {
