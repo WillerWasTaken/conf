@@ -25,6 +25,8 @@ zplug "plugins/z", from:oh-my-zsh
 zplug "andrewferrier/fzf-z"
 ASDF_DIR="$HOME/tools/asdf"
 zplug "plugins/asdf", from:oh-my-zsh
+# Automatic direnv
+zplug "ptavares/zsh-direnv"
 ZSH_TMUX_AUTOCONNECT=false
 ZSH_TMUX_AUTOSTART=true
 
