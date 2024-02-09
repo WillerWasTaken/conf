@@ -120,6 +120,13 @@
     packages = with pkgs; [];
   };
 
+  # Clean automatically old builds
+  nix.gc = {
+    automatic = true;
+    randomizedDelaySec = "14m";
+    options = "--delete-older-than 7d";
+  };
+
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
