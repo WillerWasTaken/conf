@@ -197,7 +197,7 @@
 
   programs.zsh = {
     enable = true;
-    interactiveShellInit = "export ZPLUG_DIR=${pkgs.zplug};. ${pkgs.asdf-vm}/share/asdf-vm/asdf.sh";
+    interactiveShellInit = "export ZPLUG_DIR=${pkgs.zplug};export FZF_DIR=${pkgs.fzf}; . ${pkgs.asdf-vm}/share/asdf-vm/asdf.sh";
   };
 
   programs.nm-applet.enable = true;
