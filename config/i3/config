@@ -165,8 +165,7 @@ bindsym $mod+Shift+r restart
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
 # screenshot
-# https://faq.i3wm.org/question/202/what-do-you-guys-use-for-printscreen.1.html
-bindsym $mod+Print exec scrot /tmp/screen.png
+bindsym Print exec --no-startup-id flameshot gui
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
