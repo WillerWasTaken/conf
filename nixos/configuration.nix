@@ -187,6 +187,7 @@
     ipcalc
     direnv
     keepassxc
+    flameshot
   ];
 
 
