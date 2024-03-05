@@ -69,8 +69,8 @@ setopt extendedglob
 
 export PAGER=less
 
-# Vim as default editor
-export EDITOR='vim'
+# NeoVim as default editor
+export EDITOR='nvim'
 
 # Access vi-mode using jk
 bindkey -M viins 'jk' vi-cmd-mode
@@ -87,7 +87,7 @@ alias la='ls --color -la'
 alias l='ls --color -l'
 alias ll='ls --color -l'
 alias grep='grep --color=auto'
-alias v=vim
+alias v=nvim
 alias g=git
 alias k=kubectl
 alias tg=terragrunt
