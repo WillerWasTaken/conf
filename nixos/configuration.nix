@@ -147,6 +147,8 @@
     watchman
     # REMOVE
     vim_configurable
+    neovim-unwrapped
+    kitty
     wget
     pavucontrol
     unzip
@@ -160,6 +162,8 @@
     zplug
     xsel
     asdf-vm
+    go
+    krew
     kubectl
     kubectx
     kconf
@@ -179,7 +183,6 @@
     openssl
     spotify
     htop
-    python311Packages.ansible-core
     tree
     yq
     jq
@@ -188,8 +191,20 @@
     direnv
     keepassxc
     flameshot
+    gnumake
+    dunst
   ];
 
+
+  # To run rambox as appimage directly
+  boot.binfmt.registrations.appimage = {
+    wrapInterpreterInShell = false;
+    interpreter = "${pkgs.appimage-run}/bin/appimage-run";
+    recognitionType = "magic";
+    offset = 0;
+    mask = ''\xff\xff\xff\xff\x00\x00\x00\x00\xff\xff\xff'';
+    magicOrExtension = ''\x7fELF....AI\x02'';
+  };
 
   fonts.packages = with pkgs; [
     nerdfonts
