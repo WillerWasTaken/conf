@@ -6,13 +6,12 @@ return {
     "nvim-tree/nvim-web-devicons",
     { "nvim-telescope/telescope-fzf-native.nvim", build = "make" }
   },
+  keys = {
+      { "<leader>f", function() require("telescope.builtin").find_files() end },
+      { "<leader>F", function() require("telescope.builtin").find_files({hidden=true}) end },
+      { "<leader>s", function() require("telescope.builtin").live_grep() end }
+  },
   config = function()
-    -- Keymaps
-    local builtin = require("telescope.builtin")
-    vim.keymap.set("n", "<leader>f", builtin.find_files)
-    vim.keymap.set("n", "<leader>F", function() builtin.find_files({hidden=true}) end)
-    vim.keymap.set("n", "<leader>s", builtin.live_grep)
-
     -- Extensions
     require("telescope").load_extension("fzf")
   end
