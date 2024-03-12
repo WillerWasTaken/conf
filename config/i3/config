@@ -18,6 +18,8 @@ bindsym $mod+b exec --no-startup-id $browser
 bindsym $mod+Shift+a exec rambox
 # Spotify
 bindsym $mod+Shift+s exec spotify
+# Keepassxc
+bindsym $mod+Shift+z exec keepassxc
 
 # lock
 bindsym $mod+slash exec /usr/local/bin/lock.sh
