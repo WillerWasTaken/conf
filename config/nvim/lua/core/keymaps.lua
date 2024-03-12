@@ -26,6 +26,9 @@ vim.keymap.set("n", "<leader>do", "<cmd>windo diffoff<CR>")
 -- FIXME
 -- vim.keymap.set("v", "/", "y/\V<C-r>=escape(@",'/\')<CR><CR>")
 
+-- Quick access to clipboard
+vim.keymap.set({"n", "v"}, "<leader>y", "\"+")
+
 -- Move between split
 vim.keymap.set("n", "<leader>h", "<C-W>h")
 vim.keymap.set("n", "<leader>j", "<C-W>j")
