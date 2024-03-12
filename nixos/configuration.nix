@@ -157,7 +157,6 @@
     firefox
     gitFull
     polybarFull
-    tmux
     ripgrep
     zplug
     xsel
@@ -169,7 +168,6 @@
     kconf
     dig
     fzf
-    rambox
     kubernetes-helm
     kind
     magic-wormhole
@@ -194,7 +192,6 @@
     gnumake
     dunst
   ];
-
 
   # To run rambox as appimage directly
   boot.binfmt.registrations.appimage = {

@@ -15,7 +15,7 @@ set $mod Mod4
 bindsym $mod+b exec --no-startup-id $browser
 
 # Rambox
-bindsym $mod+Shift+a exec rambox
+bindsym $mod+Shift+a exec /home/willer/tools/bin/rambox
 # Spotify
 bindsym $mod+Shift+s exec spotify
 # Keepassxc
