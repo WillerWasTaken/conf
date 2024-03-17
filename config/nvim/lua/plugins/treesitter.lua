@@ -4,8 +4,26 @@ return {
   config = function()
     require("nvim-treesitter.configs").setup({
       ensure_installed = {
-        "lua"
-      }
+        "bash",
+        "git_config",
+        "git_rebase",
+        "gitcommit",
+        "gitignore",
+        "lua",
+        "go",
+        "gomod",
+        "hcl",
+        "helm",
+        "html",
+        "json",
+        "make",
+        "markdown",
+        "markdown_inline",
+        "pem",
+        "terraform",
+        "yaml",
+        "vimdoc"
+      },
     })
-end
+  end
 }
