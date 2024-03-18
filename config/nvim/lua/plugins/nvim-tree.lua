@@ -1,3 +1,7 @@
+-- Completely disable builtin netrw in favor of nvim tree
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
 return {
   "nvim-tree/nvim-tree.lua",
   dependencies = { "nvim-tree/nvim-web-devicons" },
@@ -6,10 +10,6 @@ return {
   },
   lazy = false,
   config = function()
-    -- Completely disable builtin netrw in favor of nvim tree
-    vim.g.loaded_netrw = 1
-    vim.g.loaded_netrwPlugin = 1
-
     require("nvim-tree").setup({
       on_attach = function(bufnr)
         local api = require('nvim-tree.api')
@@ -21,7 +21,9 @@ return {
         -- default mappings
         api.config.mappings.default_on_attach(bufnr)
 
-        vim.keymap.set('n', 'CD', api.tree.change_root_to_node, opts('CD'))
+        vim.keymap.set('n', 'x',  api.node.navigate.parent_close, opts('Close Directory'))
+        vim.keymap.set('n', 'X',  api.tree.collapse_all,          opts('Collapse'))
+        vim.keymap.set('n', 'CD', api.tree.change_root_to_node,   opts('CD'))
       end,
       actions = {
         open_file = {
