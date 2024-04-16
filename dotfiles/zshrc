@@ -108,6 +108,9 @@ autoload -Uz compinit && compinit
 # FZF
 [ -f $FZF_DIR/completion.zsh ] && source $FZF_DIR/completion.zsh && source $FZF_DIR/key-bindings.zsh
 
+# Krew
+export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
+
 # Kubernetes
 # https://gdevops.gitlab.io/tuto_kubernetes/docs/tools/kubectl_aliases/kubectl_aliases.html
 [ -f ~/.kubectl_aliases ] && source ~/.kubectl_aliases
