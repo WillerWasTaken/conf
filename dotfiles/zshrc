@@ -5,10 +5,13 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
+ZPLUG_DIR=${ZPLUG_DIR:-$HOME/.zplug}
+FZF_DIR=${FZF_DIR:-/usr/share/fzf}
+
 # local bin
 export PATH="$PATH:$HOME/.local/bin:$HOME/tools/bin"
 
-source $HOME/.zplug/init.zsh
+source $ZPLUG_DIR/init.zsh
 # Main theme
 zplug "romkatv/powerlevel10k", as:theme, depth:1
 # Vi mode in terminal
@@ -103,7 +106,7 @@ alias -g pingme="; notify-send JOB FINISHED"
 autoload -Uz compinit && compinit
 
 # FZF
-[ -f /usr/share/fzf/completion.zsh ] && source /usr/share/fzf/completion.zsh && source /usr/share/fzf/key-bindings.zsh
+[ -f $FZF_DIR/completion.zsh ] && source $FZF_DIR/completion.zsh && source $FZF_DIR/key-bindings.zsh
 
 # Kubernetes
 # https://gdevops.gitlab.io/tuto_kubernetes/docs/tools/kubectl_aliases/kubectl_aliases.html
