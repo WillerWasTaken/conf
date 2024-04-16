@@ -94,7 +94,7 @@ alias sz='source ~/.zshrc'
 # Get kubectl completion on alias
 source <(kubectl completion zsh)
 compdef __start_kubectl k
-alias gitk="gitk --all&"
+alias qgit="qgit --all&"
 alias -g pingme="; notify-send JOB FINISHED"
 
 ################## TOOLS ################
