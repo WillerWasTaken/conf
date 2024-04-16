@@ -110,6 +110,7 @@ in {
     ".zshrc".source = dotfileSymlink "zshrc";
 
     ".config/kitty/kitty.conf".source = configSymlink "kitty/kitty.conf";
+    ".config/kitty/current-theme.conf".source = configSymlink "kitty/current-theme.conf";
     ".config/i3/config".source = configSymlink "i3/config";
     ".config/polybar".source = configSymlink "polybar";
     ".config/dunst".source = configSymlink "dunst";
