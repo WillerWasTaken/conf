@@ -20,6 +20,7 @@ return {
         "markdown",
         "markdown_inline",
         "pem",
+        "python",
         "terraform",
         "yaml",
         "vimdoc"

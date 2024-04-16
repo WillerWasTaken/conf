@@ -19,24 +19,26 @@ return {
       -- see :help lsp-zero-keybindings
       -- to learn the available actions
       lsp_zero.default_keymaps({buffer = bufnr})
-      vim.keymap.set("n", "<leader>lf", function() vim.lsp.buf.format() end, { buffer = bufnr })
-      vim.keymap.set("n", "<leader>lr", function() vim.lsp.buf.rename() end, { buffer = bufnr })
+      vim.keymap.set("n", "<leader>lf", vim.lsp.buf.format, { buffer = bufnr })
+      vim.keymap.set("n", "<leader>lr", vim.lsp.buf.rename, { buffer = bufnr })
     end)
 
     -- Setup language servers.
     local lspconfig = require('lspconfig')
-    lspconfig.lua_ls.setup({
-        settings = {
-            Lua = {
-                diagnostics = {
-                    globals = { 'vim' }
-                }
-            }
-        }
-    })
+    -- Specific lua config for nvim
+    lspconfig.lua_ls.setup(lsp_zero.nvim_lua_ls())
     lspconfig.gopls.setup({})
     lspconfig.ansiblels.setup({})
     lspconfig.bashls.setup({})
-    lspconfig.terraform_lsp.setup({})
+    lspconfig.terraformls.setup({})
+    lspconfig.pylsp.setup({})
+
+    local cmp = require('cmp')
+    cmp.setup({
+      mapping = cmp.mapping.preset.insert({
+        -- Enter key to confirm completion
+        ['<CR>'] = cmp.mapping.confirm({select = false}),
+      })
+    })
   end
 }
