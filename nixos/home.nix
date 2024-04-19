@@ -16,6 +16,7 @@ in {
     python3
     asdf-vm
     zplug
+    nerdfonts
 
     qgit
     wget

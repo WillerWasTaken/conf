@@ -8,7 +8,6 @@
   imports =
     [ # Include the results of the hardware scan.
       /etc/nixos/hardware-configuration.nix
-      inputs.home-manager.nixosModules.default
     ];
 
   # Bootloader.
@@ -115,17 +114,6 @@
     description = "Willer";
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [];
-  };
-
-  home-manager = {
-    extraSpecialArgs = {
-      inherit pkgs;
-      nixVersion = systemConfiguration.nixVersion;
-      inherit homeConfiguration;
-    };
-    users = {
-      ${homeConfiguration.username} = import ./home.nix;
-    };
   };
 
   nix = {

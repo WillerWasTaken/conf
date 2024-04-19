@@ -47,8 +47,18 @@
           inherit homeConfiguration;
         };
         modules = [
-          ({ config, pkgs, ... }: { nixpkgs.overlays = [ overlay-unstable ]; })
           ./configuration.nix
+        ];
+      };
+      homeConfigurations.${homeConfiguration.username} = inputs.home-manager.lib.homeManagerConfiguration {
+        pkgs = import nixpkgs { system = systemConfiguration.system; config.allowUnfree = true; };
+        extraSpecialArgs = {
+          nixVersion = systemConfiguration.nixVersion;
+          inherit homeConfiguration;
+        };
+        modules = [
+          ({ config, pkgs, ... }: { nixpkgs.overlays = [ overlay-unstable ]; })
+          ./home.nix
         ];
       };
     };
