@@ -11,6 +11,9 @@ in {
 
   home.stateVersion = nixVersion;
 
+  # Enable font discovery through home manager
+  fonts.fontconfig.enable = true
+
   home.packages = with pkgs; [
     kitty
     python3
