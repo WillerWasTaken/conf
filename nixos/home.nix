@@ -12,7 +12,7 @@ in {
   home.stateVersion = nixVersion;
 
   # Enable font discovery through home manager
-  fonts.fontconfig.enable = true
+  fonts.fontconfig.enable = true;
 
   home.packages = with pkgs; [
     kitty
@@ -58,7 +58,6 @@ in {
 
     # NUMSPOT
     nodejs
-    vault
     gcc
     awscli2
     gnupg

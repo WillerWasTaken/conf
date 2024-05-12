@@ -128,9 +128,6 @@
     settings.experimental-features = [ "nix-command" "flakes" ];
   };
 
-  # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
-
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
@@ -144,10 +141,6 @@
     pinentryFlavor = "curses";
     enableSSHSupport = true;
   };
-
-  fonts.packages = with pkgs; [
-    nerdfonts
-  ];
 
   programs.zsh = {
     enable = true;

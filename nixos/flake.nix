@@ -31,6 +31,10 @@
         dotfilesDir = "${confDir}/dotfiles";
         configDir = "${confDir}/config";
       };
+      homeManagerSpecialArgs = {
+        nixVersion = systemConfiguration.nixVersion;
+        inherit homeConfiguration;
+      };
 
       overlay-unstable = final: prev: {
         unstable = import inputs.nixpkgs-unstable {
@@ -38,26 +42,32 @@
           config.allowUnfree = true;
         };
       };
+      pkgs = import nixpkgs { system = systemConfiguration.system; config.allowUnfree = true; overlays = [ overlay-unstable ]; };
     in {
       nixosConfigurations.${systemConfiguration.hostname} = nixpkgs.lib.nixosSystem {
         system = systemConfiguration.system;
         specialArgs = {
+          inherit pkgs;
           inherit inputs;
           inherit systemConfiguration;
           inherit homeConfiguration;
         };
         modules = [
           ./configuration.nix
+          inputs.home-manager.nixosModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.users.${homeConfiguration.username} = import ./home.nix;
+
+            home-manager.extraSpecialArgs = homeManagerSpecialArgs;
+          }
         ];
       };
       homeConfigurations.${homeConfiguration.username} = inputs.home-manager.lib.homeManagerConfiguration {
-        pkgs = import nixpkgs { system = systemConfiguration.system; config.allowUnfree = true; };
-        extraSpecialArgs = {
-          nixVersion = systemConfiguration.nixVersion;
-          inherit homeConfiguration;
-        };
+        inherit pkgs;
+        extraSpecialArgs = homeManagerSpecialArgs;
         modules = [
-          ({ config, pkgs, ... }: { nixpkgs.overlays = [ overlay-unstable ]; })
           ./home.nix
         ];
       };
