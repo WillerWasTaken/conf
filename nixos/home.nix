@@ -106,6 +106,15 @@ in {
     };
   };
 
+  systemd.user.services.onedrive = {
+    Unit = {
+      Description = "Sync onedrive.";
+    };
+    Service = {
+      ExecStart = "${pkgs.onedrive}/bin/onedrive --monitor";
+    };
+  };
+
   home.file = {
     ".vimrc".source = dotfileSymlink "vimrc";
     ".p10k.zsh".source = dotfileSymlink "p10k.zsh";
