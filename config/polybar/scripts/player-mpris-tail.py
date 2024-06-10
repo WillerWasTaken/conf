@@ -1,5 +1,5 @@
 #!/usr/bin/env nix-shell
-#!nix-shell -i python3 -p "python3.withPackages (ps: [ ps.dbus-python ps.gst-python ])"
+#!nix-shell -i python3 -p "python3.withPackages (ps: [ ps.dbus-python ps.gst-python ])" -p gobject-introspection
 
 import sys
 import dbus

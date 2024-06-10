@@ -66,6 +66,7 @@ in {
     chromium
     talosctl
     vcluster
+    vault
     cfssl
     age
   ];
@@ -114,6 +115,9 @@ in {
       ExecStart = "${pkgs.onedrive}/bin/onedrive --monitor";
     };
   };
+
+  services.network-manager-applet.enable = true;
+  services.blueman-applet.enable = true;
 
   home.file = {
     ".vimrc".source = dotfileSymlink "vimrc";

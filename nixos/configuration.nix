@@ -58,8 +58,10 @@
 
   # Configure keymap in X11
   services.xserver = {
-    layout = systemConfiguration.kbLayout;
-    xkbVariant = systemConfiguration.kbVariant;
+    xkb = {
+      variant = systemConfiguration.kbVariant;
+      layout = systemConfiguration.kbLayout;
+    };
 
     enable = true;
 
@@ -68,7 +70,6 @@
     };
 
     displayManager = {
-      defaultSession = "none+i3";
       lightdm.enable = true;
     };
 
@@ -138,7 +139,7 @@
   services.pcscd.enable = true;
   programs.gnupg.agent = {
     enable = true;
-    pinentryFlavor = "curses";
+    pinentryPackage = pkgs.pinentry-curses;
     enableSSHSupport = true;
   };
 

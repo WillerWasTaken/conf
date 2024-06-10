@@ -212,8 +212,6 @@ gaps inner 5
 # Use polybar instead of i3status
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
-# Load network manager applet https://faq.i3wm.org/question/2/how-can-i-use-networkmanager-with-i3.1.html
-exec --no-startup-id nm-applet
 exec --no-startup-id blueman-applet
 
 # Picom for transparency
