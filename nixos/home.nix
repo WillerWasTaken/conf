@@ -55,6 +55,7 @@ in {
     unstable.rambox
     keepassxc
     flameshot
+    pdfarranger
 
     # NUMSPOT
     nodejs
