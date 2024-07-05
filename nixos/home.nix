@@ -35,6 +35,7 @@ in {
     yq
     tcpdump
     ipcalc
+    ncdu
     magic-wormhole
     wireguard-tools
 
