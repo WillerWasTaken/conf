@@ -13,6 +13,27 @@ return {
   },
   config = function()
     -- Extensions
-    require("telescope").load_extension("fzf")
+    local telescope = require("telescope")
+    telescope.load_extension("fzf")
+
+    local actions = require("telescope.actions")
+    telescope.setup({
+      defaults = {
+        mappings = {
+          i = {
+            ["<Tab>"]   = actions.toggle_selection + actions.move_selection_better,
+            ["<S-Tab>"] = actions.toggle_selection + actions.move_selection_worse,
+            ["<C-q>"]   = actions.send_selected_to_qflist + actions.open_qflist,
+            ["<M-q>"]   = actions.send_to_qflist + actions.open_qflist,
+          },
+          n= {
+            ["<Tab>"]   = actions.toggle_selection + actions.move_selection_better,
+            ["<S-Tab>"] = actions.toggle_selection + actions.move_selection_worse,
+            ["<C-q>"]   = actions.send_selected_to_qflist + actions.open_qflist,
+            ["<M-q>"]   = actions.send_to_qflist + actions.open_qflist,
+          }
+        }
+      },
+    })
   end
 }
