@@ -12,6 +12,7 @@ return {
         "gitcommit",
         "gitignore",
         "lua",
+        "c",
         "go",
         "gomod",
         "hcl",
