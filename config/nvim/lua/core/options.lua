@@ -22,7 +22,6 @@ local options = {
   -- Show trailing whitespaces as dashes
   list = true,
   listchars = 'tab:▸ ,trail:·,extends:>,precedes:<,nbsp:+',
-  -- Fix colorscheme colors
   termguicolors = true
 }
 
