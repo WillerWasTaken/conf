@@ -16,8 +16,8 @@ bindsym $mod+b exec --no-startup-id $browser
 
 # Rambox
 bindsym $mod+Shift+a exec rambox
-# Spotify
-bindsym $mod+Shift+s exec spotify
+# Music
+bindsym $mod+Shift+s exec youtube-music
 # Keepassxc
 bindsym $mod+Shift+z exec keepassxc
 

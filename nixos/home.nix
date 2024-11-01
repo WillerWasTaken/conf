@@ -53,7 +53,7 @@ in {
     kubernetes-helm
     kind
 
-    spotify
+    youtube-music
     unstable.rambox
     keepassxc
     flameshot
