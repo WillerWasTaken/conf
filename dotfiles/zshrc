@@ -93,6 +93,7 @@ alias tg=terragrunt
 alias tf=terraform
 alias asl='aws sso login'
 alias sz='source ~/.zshrc'
+alias sshgen='ssh-keygen -t ed25519'
 
 # Get kubectl completion on alias
 source <(kubectl completion zsh)
