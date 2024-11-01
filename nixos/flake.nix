@@ -30,6 +30,7 @@
         confDir = "${homeDir}/conf";
         dotfilesDir = "${confDir}/dotfiles";
         configDir = "${confDir}/config";
+        scriptsDir = "${confDir}/scripts";
       };
       homeManagerSpecialArgs = {
         nixVersion = systemConfiguration.nixVersion;

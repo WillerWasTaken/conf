@@ -22,7 +22,7 @@ bindsym $mod+Shift+s exec spotify
 bindsym $mod+Shift+z exec keepassxc
 
 # lock
-bindsym $mod+slash exec /usr/local/bin/lock.sh
+bindsym $mod+slash exec $HOME/tools/scripts/lock.sh
 
 # suspend
 bindsym $mod+Escape exec systemctl suspend

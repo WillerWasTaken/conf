@@ -5,6 +5,7 @@ let
 
   dotfileSymlink = path: mkMutableSymlink homeConfiguration.dotfilesDir path;
   configSymlink = path: mkMutableSymlink homeConfiguration.configDir path;
+  scriptSymlink = path: mkMutableSymlink homeConfiguration.scriptsDir path;
 in {
   home.username = homeConfiguration.username;
   home.homeDirectory = homeConfiguration.homeDir;
@@ -133,6 +134,8 @@ in {
     ".config/polybar".source = configSymlink "polybar";
     ".config/dunst".source = configSymlink "dunst";
     ".config/nvim".source = configSymlink "nvim";
+
+    "tools/scripts/lock.sh".source = scriptSymlink "lock.sh";
   };
 
   programs.home-manager.enable = true;
