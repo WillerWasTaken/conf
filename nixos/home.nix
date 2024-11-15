@@ -53,6 +53,9 @@ in {
     kubernetes-helm
     kind
 
+    terraform
+    terraform-docs
+
     # Azure
     kubelogin
     azure-cli
