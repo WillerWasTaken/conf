@@ -66,7 +66,6 @@ in {
     gnupg
     pinentry-curses
     onedrive
-    chromium
     talosctl
     vcluster
     vault
@@ -77,6 +76,7 @@ in {
   programs.autorandr.enable = true;
   programs.direnv.enable = true;
   programs.firefox.enable = true;
+  programs.chromium.enable = true;
   programs.fzf.enable = true;
   programs.git.enable = true;
   programs.go.enable = true;
