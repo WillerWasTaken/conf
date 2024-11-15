@@ -53,6 +53,10 @@ in {
     kubernetes-helm
     kind
 
+    # Azure
+    kubelogin
+    azure-cli
+
     youtube-music
     unstable.rambox
     keepassxc
