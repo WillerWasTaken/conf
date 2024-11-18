@@ -20,7 +20,7 @@ vim.keymap.set("n", "<leader>cs", "<cmd>source ~/.config/nvim/init.lua<CR>")
 
 -- Diff
 vim.keymap.set("n", "<leader>dt", "<cmd>windo diffthis<CR>")
-vim.keymap.set("n", "<leader>do", "<cmd>windo diffoff<CR>")
+vim.keymap.set("n", "<leader>do", "<cmd>windo diffoff!<CR>")
 
 -- Search under visual
 -- FIXME
