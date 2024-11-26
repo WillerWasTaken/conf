@@ -23,8 +23,8 @@ vim.keymap.set("n", "<leader>dt", "<cmd>windo diffthis<CR>")
 vim.keymap.set("n", "<leader>do", "<cmd>windo diffoff!<CR>")
 
 -- Search under visual
--- FIXME
--- vim.keymap.set("v", "/", "y/\V<C-r>=escape(@",'/\')<CR><CR>")
+vim.keymap.set("v", "*", "y/\\V<C-r>=escape(@\",'/\\')<CR><CR>")
+vim.keymap.set("v", "#", "y?\\V<C-r>=escape(@\",'/\\')<CR><CR>")
 
 -- Quick access to clipboard
 vim.keymap.set({"n", "v"}, "<leader>y", "\"+")
