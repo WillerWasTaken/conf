@@ -6,7 +6,7 @@ return {
   "nvim-tree/nvim-tree.lua",
   dependencies = { "nvim-tree/nvim-web-devicons" },
   keys = {
-    { "<leader>o", ":NvimTreeFindFile<CR>", desc = "Tree toogle" }
+    { "<leader>o", ":NvimTreeFindFile!<CR>", desc = "Tree toogle" }
   },
   lazy = false,
   config = function()
