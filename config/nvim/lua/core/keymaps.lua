@@ -15,8 +15,8 @@ vim.keymap.set("n", "k", "gk")
 vim.keymap.set("i", "jk", "<Esc>")
 
 -- Vim configuration manipulation
-vim.keymap.set("n", "<leader>ce", "<cmd>tabnew<CR>:lcd ~/conf<CR>:e ~/conf/config/nvim/init.lua<CR>")
-vim.keymap.set("n", "<leader>cs", "<cmd>source ~/.config/nvim/init.lua<CR>")
+vim.keymap.set("n", "<leader>ce", "<cmd>tabnew $MYVIMRC<CR>:tcd `dirname $MYVIMRC`<CR>")
+vim.keymap.set("n", "<leader>cs", "<cmd>source $MYVIMRC<CR>")
 
 -- Diff
 vim.keymap.set("n", "<leader>dt", "<cmd>windo diffthis<CR>")
