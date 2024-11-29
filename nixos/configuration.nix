@@ -7,8 +7,13 @@
 {
   imports =
     [ # Include the results of the hardware scan.
-      /etc/nixos/hardware-configuration.nix
+      ./hardware-configuration.nix
+      "${builtins.fetchGit { url = "https://github.com/NixOS/nixos-hardware.git"; }}/common/gpu/nvidia/ada-lovelace"
     ];
+  services.xserver.dpi = 97;
+  environment.variables = {
+    GDK_SCALE = "0.5";
+  };
 
   # Bootloader.
   boot = {
