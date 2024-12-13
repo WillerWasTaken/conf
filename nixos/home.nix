@@ -65,19 +65,6 @@ in {
     keepassxc
     flameshot
     pdfarranger
-
-    # NUMSPOT
-    nodejs
-    gcc
-    awscli2
-    gnupg
-    pinentry-curses
-    onedrive
-    talosctl
-    vcluster
-    vault
-    cfssl
-    age
   ];
 
   programs.autorandr.enable = true;
@@ -117,14 +104,14 @@ in {
     };
   };
 
-  systemd.user.services.onedrive = {
-    Unit = {
-      Description = "Sync onedrive.";
-    };
-    Service = {
-      ExecStart = "${pkgs.onedrive}/bin/onedrive --monitor";
-    };
-  };
+  # systemd.user.services.onedrive = {
+  #   Unit = {
+  #     Description = "Sync onedrive.";
+  #   };
+  #   Service = {
+  #     ExecStart = "${pkgs.onedrive}/bin/onedrive --monitor";
+  #   };
+  # };
 
   services.network-manager-applet.enable = true;
   services.blueman-applet.enable = true;
