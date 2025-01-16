@@ -11,6 +11,13 @@ in {
   home.homeDirectory = homeConfiguration.homeDir;
 
   home.stateVersion = nixVersion;
+  nix = {
+    gc = {
+      automatic = true;
+      randomizedDelaySec = "14m";
+      options = "--delete-older-than 7d";
+    };
+  };
 
   # Enable font discovery through home manager
   fonts.fontconfig.enable = true;
