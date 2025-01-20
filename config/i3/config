@@ -142,10 +142,10 @@ bindsym $mod+y move workspace to output left
 bindsym $mod+o move workspace to output right
 
 # activate VGA left
-bindsym $mod+u exec xrandr --output "HDMI1" --left-of "eDP1" --auto
+bindsym $mod+u exec autorandr --change
 # bindsym $mod+u exec xrandr --output "DP1" --left-of "eDP1" --auto
 # deactivate VGA
-bindsym $mod+i exec xrandr --output "HDMI1" --left-of "eDP1" --off
+bindsym $mod+i exec autorandr default
 # bindsym $mod+i exec xrandr --output "DP1" --left-of "eDP1" --off
 
 # move focused container to workspace
