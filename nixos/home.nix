@@ -136,6 +136,9 @@ in {
     ".p10k.zsh".source = dotfileSymlink "p10k.zsh";
     ".gitconfig".source = dotfileSymlink "gitconfig";
     ".zshrc".source = dotfileSymlink "zshrc";
+    ".kubectl_aliases".source = builtins.fetchurl {
+      url = https://raw.githubusercontent.com/ahmetb/kubectl-aliases/refs/heads/master/.kubectl_aliases;
+    };
 
     ".config/kitty/kitty.conf".source = configSymlink "kitty/kitty.conf";
     ".config/kitty/current-theme.conf".source = configSymlink "kitty/current-theme.conf";

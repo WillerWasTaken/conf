@@ -113,7 +113,6 @@ autoload -Uz compinit && compinit
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 
 # Kubernetes
-# https://gdevops.gitlab.io/tuto_kubernetes/docs/tools/kubectl_aliases/kubectl_aliases.html
 [ -f ~/.kubectl_aliases ] && source ~/.kubectl_aliases
 
 ################## PROJECT ################
