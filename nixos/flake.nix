@@ -19,13 +19,14 @@
         timeZone = "Europe/Paris";
         defaultLocale = "en_US.UTF-8";
         extraLocale = "fr_FR.UTF-8";
-        kbLayout = "us";
-        kbVariant = "altgr-intl";
       };
 
       homeConfiguration = with homeConfiguration; {
         username = "willer";
         homeDir = "/home/${username}";
+
+        kbLayout = "us";
+        kbVariant = "altgr-intl";
 
         confDir = "${homeDir}/conf";
         dotfilesDir = "${confDir}/dotfiles";

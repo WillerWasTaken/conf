@@ -61,11 +61,6 @@
 
   # Configure keymap in X11
   services.xserver = {
-    xkb = {
-      variant = systemConfiguration.kbVariant;
-      layout = systemConfiguration.kbLayout;
-    };
-
     enable = true;
 
     desktopManager = {

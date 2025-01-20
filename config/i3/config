@@ -55,10 +55,10 @@ bindsym $mod+Return exec kitty
 set $browser firefox
 
 # Set fr kbmap
-bindsym $mod+z exec setxkbmap fr
+# bindsym $mod+z exec setxkbmap fr
 
 # Set english kbmap
-bindsym $mod+x exec setxkbmap -rules evdev -model evdev -layout us -variant altgr-intl
+# bindsym $mod+x exec setxkbmap -rules evdev -model evdev -layout us -variant altgr-intl
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -221,4 +221,4 @@ exec picom -f
 exec nitrogen --restore
 
 # Set keyboard layout
-exec setxkbmap -rules evdev -model evdev -layout us -variant altgr-intl
+# exec setxkbmap -rules evdev -model evdev -layout us -variant altgr-intl

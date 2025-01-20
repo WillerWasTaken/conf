@@ -19,6 +19,14 @@ in {
     };
   };
 
+  xsession = {
+    enable = true;
+  };
+  home.keyboard = {
+    layout = homeConfiguration.kbLayout;
+    variant = homeConfiguration.kbVariant;
+  };
+
   # Enable font discovery through home manager
   fonts.fontconfig.enable = true;
 
