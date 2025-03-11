@@ -37,6 +37,7 @@ in {
     zplug
     nerdfonts
 
+    # Cmd
     wget
     gnumake
     unzip
@@ -54,12 +55,9 @@ in {
     magic-wormhole
     wireguard-tools
 
-    pavucontrol
-    pamixer
-    arandr
-    polybarFull
-    dunst
-
+    # Devops
+    terraform
+    terraform-docs
     krew
     kubectl
     kubectx
@@ -67,13 +65,19 @@ in {
     kubernetes-helm
     kind
 
-    terraform
-    terraform-docs
 
     # Azure
     kubelogin
     azure-cli
 
+    # Desktop
+    pavucontrol
+    pamixer
+    arandr
+    polybarFull
+    dunst
+
+    # Graphical
     youtube-music
     unstable.rambox
     keepassxc
