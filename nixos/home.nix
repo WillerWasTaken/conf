@@ -69,6 +69,7 @@ in {
     # Azure
     kubelogin
     azure-cli
+    azuredatastudio
 
     # Desktop
     pavucontrol
