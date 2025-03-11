@@ -37,7 +37,6 @@ in {
     zplug
     nerdfonts
 
-    qgit
     wget
     gnumake
     unzip
@@ -87,7 +86,10 @@ in {
   programs.firefox.enable = true;
   programs.chromium.enable = true;
   programs.fzf.enable = true;
-  programs.git.enable = true;
+  programs.git = {
+    enable = true;
+    package = pkgs.gitFull;
+  };
   programs.go.enable = true;
   programs.htop.enable = true;
   programs.jq.enable = true;

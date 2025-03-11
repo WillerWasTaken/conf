@@ -98,7 +98,7 @@ alias sshgen='ssh-keygen -t ed25519'
 # Get kubectl completion on alias
 source <(kubectl completion zsh)
 compdef __start_kubectl k
-alias qgit="qgit --all&"
+alias gitk="gitk --all&"
 alias -g pingme="; notify-send JOB FINISHED"
 
 ################## TOOLS ################
