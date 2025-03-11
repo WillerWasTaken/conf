@@ -80,6 +80,7 @@ in {
     # Graphical
     youtube-music
     unstable.rambox
+    signal-desktop
     keepassxc
     flameshot
     pdfarranger
