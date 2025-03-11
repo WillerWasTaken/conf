@@ -48,7 +48,7 @@ in {
     scrot
     xsel
     tree
-    yq
+    yq-go
     tcpdump
     ipcalc
     ncdu
