@@ -65,6 +65,10 @@ in {
     kubernetes-helm
     kind
 
+    # Language
+    cargo
+    rustc
+    clang
 
     # Azure
     kubelogin
