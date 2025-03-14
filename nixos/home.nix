@@ -108,12 +108,18 @@ in {
     defaultEditor = true;
     extraPackages = with pkgs; [
       # LSP
-      lua-language-server
-      gopls
       ansible-language-server
-      terraform-ls
       nodePackages.bash-language-server
+      docker-compose-language-service
+      dockerfile-language-server-nodejs
+      gopls
+      jq-lsp
+      vscode-langservers-extracted
+      lua-language-server
+      nginx-language-server
       python3Packages.python-lsp-server
+      rust-analyzer
+      terraform-ls
     ];
   };
   # Conflict with .ssh/config

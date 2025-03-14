@@ -30,13 +30,19 @@ return {
 
     -- Setup language servers.
     local lspconfig = require('lspconfig')
-    -- Specific lua config for nvim
-    lspconfig.lua_ls.setup(lsp_zero.nvim_lua_ls())
-    lspconfig.gopls.setup({})
     lspconfig.ansiblels.setup({})
     lspconfig.bashls.setup({})
-    lspconfig.terraformls.setup({})
+    lspconfig.docker_compose_language_service.setup({})
+    lspconfig.dockerls.setup({})
+    lspconfig.gopls.setup({})
+    lspconfig.jqls.setup({})
+    lspconfig.jsonls.setup({})
+    -- Specific lua config for nvim
+    lspconfig.lua_ls.setup(lsp_zero.nvim_lua_ls())
+    lspconfig.nginx_language_server.setup({})
     lspconfig.pylsp.setup({})
+    lspconfig.rust_analyzer.setup({})
+    lspconfig.terraformls.setup({})
 
     local cmp = require('cmp')
     cmp.setup({
