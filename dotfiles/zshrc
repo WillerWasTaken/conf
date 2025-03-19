@@ -88,9 +88,20 @@ alias ll='ls --color -l'
 alias grep='grep --color=auto'
 alias v=nvim
 alias g=git
+alias gst='git status'
+alias gl='git log -5'
+alias gl1='git log -1'
+alias gp='git pull -p'
+alias gf='git fetch -p'
+alias gd='git diff'
+alias gdn='git diff --name-only'
+alias gdc='git diff --cached'
+alias gitk="gitk --all&"
+alias gk="\gitk --all&"
 alias k=kubectl
 alias tg=terragrunt
 alias tf=terraform
+alias tfd='terraform-docs markdown table --output-file README.md .'
 alias asl='aws sso login'
 alias sz='source ~/.zshrc'
 alias sshgen='ssh-keygen -t ed25519'
@@ -98,7 +109,6 @@ alias sshgen='ssh-keygen -t ed25519'
 # Get kubectl completion on alias
 source <(kubectl completion zsh)
 compdef __start_kubectl k
-alias gitk="gitk --all&"
 alias -g pingme="; notify-send JOB FINISHED"
 
 ################## TOOLS ################
