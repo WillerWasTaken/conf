@@ -158,6 +158,9 @@ in {
     ".kubectl_aliases".source = builtins.fetchurl {
       url = https://raw.githubusercontent.com/ahmetb/kubectl-aliases/refs/heads/master/.kubectl_aliases;
     };
+    ".background-image".source = builtins.fetchurl {
+      url = https://cdna.artstation.com/p/assets/images/images/016/549/966/4k/hou-china-6.jpg?1552570320;
+    };
 
     ".config/kitty/kitty.conf".source = configSymlink "kitty/kitty.conf";
     ".config/kitty/current-theme.conf".source = configSymlink "kitty/current-theme.conf";
