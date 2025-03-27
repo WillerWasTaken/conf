@@ -107,6 +107,10 @@ in {
   # Conflict with kitty conf file
   # programs.kitty.enable = true;
   programs.ripgrep.enable = true;
+  programs.rofi = {
+    enable = true;
+    theme = "solarized_alternate";
+  };
   programs.neovim = {
     enable = true;
     defaultEditor = true;
