@@ -92,6 +92,7 @@ in {
   ];
 
   programs.autorandr.enable = true;
+  programs.bat.enable = true;
   programs.direnv.enable = true;
   programs.firefox.enable = true;
   programs.chromium.enable = true;
