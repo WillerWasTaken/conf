@@ -9,6 +9,9 @@
     [ # Include the results of the hardware scan.
       /etc/nixos/hardware-configuration.nix
     ];
+  # Use localtime just like windows for dual boot
+  # https://nixos.wiki/wiki/Dual_Booting_NixOS_and_Windows
+  time.hardwareClockInLocalTime = true;
 
   # Bootloader.
   boot = {
