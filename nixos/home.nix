@@ -67,6 +67,7 @@ in {
 
     # Language
     cargo
+    cargo-watch
     rustc
     clang
 
