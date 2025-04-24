@@ -4,7 +4,13 @@ return {
     "nvim-lua/plenary.nvim",
     "sharkdp/fd",
     "nvim-tree/nvim-web-devicons",
-    { "nvim-telescope/telescope-fzf-native.nvim", build = "make" }
+    {
+      "nvim-telescope/telescope-fzf-native.nvim",
+      build = "make",
+      config = function()
+        require("telescope").load_extension("fzf")
+      end
+    }
   },
   keys = function()
     local builtin = require("telescope.builtin")
@@ -14,13 +20,9 @@ return {
       { "<leader>s", function() builtin.live_grep() end }
     }
   end,
-  config = function()
-    -- Extensions
-    local telescope = require("telescope")
-    telescope.load_extension("fzf")
-
+  opts = function()
     local actions = require("telescope.actions")
-    telescope.setup({
+    return {
       defaults = {
         mappings = {
           i = {
@@ -29,7 +31,7 @@ return {
             ["<C-q>"]   = actions.send_selected_to_qflist + actions.open_qflist,
             ["<M-q>"]   = actions.send_to_qflist + actions.open_qflist,
           },
-          n= {
+          n = {
             ["<Tab>"]   = actions.toggle_selection + actions.move_selection_better,
             ["<S-Tab>"] = actions.toggle_selection + actions.move_selection_worse,
             ["<C-q>"]   = actions.send_selected_to_qflist + actions.open_qflist,
@@ -42,6 +44,6 @@ return {
           enable_preview = true
         }
       }
-    })
+    }
   end
 }
