@@ -1,8 +1,3 @@
--- Disable lsp when using scrollback
-if vim.env.KITTY_SCROLLBACK_NVIM == 'true' then
-    return {}
-end
-
 return {
   "VonHeikemen/lsp-zero.nvim",
   branch="v3.x",
@@ -15,6 +10,7 @@ return {
     {"hrsh7th/nvim-cmp"},
     {"L3MON4D3/LuaSnip"},
   },
+  enabled = not vim.env.KITTY_SCROLLBACK_NVIM,
   config = function()
     local lsp_zero = require("lsp-zero")
 
