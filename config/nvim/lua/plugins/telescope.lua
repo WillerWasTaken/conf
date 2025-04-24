@@ -6,11 +6,14 @@ return {
     "nvim-tree/nvim-web-devicons",
     { "nvim-telescope/telescope-fzf-native.nvim", build = "make" }
   },
-  keys = {
-      { "<leader>f", function() require("telescope.builtin").find_files() end },
-      { "<leader>F", function() require("telescope.builtin").find_files({hidden=true}) end },
-      { "<leader>s", function() require("telescope.builtin").live_grep() end }
-  },
+  keys = function()
+    local builtin = require("telescope.builtin")
+    return {
+      { "<leader>f", function() builtin.find_files() end },
+      { "<leader>F", function() builtin.find_files({hidden=true}) end },
+      { "<leader>s", function() builtin.live_grep() end }
+    }
+  end,
   config = function()
     -- Extensions
     local telescope = require("telescope")
