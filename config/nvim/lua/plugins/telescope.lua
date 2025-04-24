@@ -4,6 +4,7 @@ return {
     "nvim-lua/plenary.nvim",
     "sharkdp/fd",
     "nvim-tree/nvim-web-devicons",
+    -- Extensions
     {
       "nvim-telescope/telescope-fzf-native.nvim",
       build = "make",
