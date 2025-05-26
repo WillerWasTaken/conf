@@ -35,7 +35,6 @@ in {
     python3
     asdf-vm
     zplug
-    nerdfonts
 
     # Cmd
     wget
@@ -90,7 +89,7 @@ in {
     keepassxc
     flameshot
     pdfarranger
-  ];
+  ] ++ builtins.filter pkgs.lib.isDerivation (builtins.attrValues pkgs.nerd-fonts);
 
   programs.autorandr.enable = true;
   programs.bat.enable = true;

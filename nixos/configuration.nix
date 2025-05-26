@@ -90,7 +90,6 @@
   services.printing.enable = true;
 
   # Enable sound
-  hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;
 
   # Enable touchpad support (enabled default in most desktopManager).
@@ -126,6 +125,7 @@
   programs.zsh = {
     enable = true;
   };
+  programs.i3lock.enable = true;
 
   programs.nm-applet.enable = true;
   programs.thunar.enable = true;
