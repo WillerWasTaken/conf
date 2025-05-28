@@ -45,17 +45,16 @@
         };
       };
       pkgs = import nixpkgs { system = systemConfiguration.system; config.allowUnfree = true; overlays = [ overlay-unstable ]; };
-      pkgsConfig = { nixpkgs.system = systemConfiguration.system; nixpkgs.config.allowUnfree = true; nixpkgs.overlays = [ overlay-unstable ]; };
     in {
       nixosConfigurations.${systemConfiguration.hostname} = nixpkgs.lib.nixosSystem {
         system = systemConfiguration.system;
+        inherit pkgs;
         specialArgs = {
           inherit inputs;
           inherit systemConfiguration;
           inherit homeConfiguration;
         };
         modules = [
-          pkgsConfig
           ./configuration.nix
           inputs.home-manager.nixosModules.home-manager
           {
