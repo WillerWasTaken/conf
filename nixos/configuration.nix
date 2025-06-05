@@ -129,6 +129,7 @@
 
   programs.nm-applet.enable = true;
   programs.thunar.enable = true;
+  services.tumbler.enable = true; # Thumbnail support for images in thunar
 
   virtualisation = {
     podman = {
