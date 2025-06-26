@@ -71,6 +71,10 @@ bindsym $mod+d exec rofi -show drun
 # installed.
 # bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
+# Notification
+bindsym $mod+space exec --no-startup-id dunstctl close
+bindsym $mod+Shift+space exec --no-startup-id dunstctl set-paused toggle
+
 # sound
 bindsym XF86AudioRaiseVolume exec pamixer -i 3 -u
 bindsym XF86AudioLowerVolume exec pamixer -d 3 -u
@@ -115,10 +119,10 @@ bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 
 # toggle tiling / floating
-bindsym $mod+Shift+space floating toggle
+bindsym $mod+Shift+BackSpace floating toggle
 
 # change focus between tiling / floating windows
-bindsym $mod+space focus mode_toggle
+bindsym $mod+BackSpace focus mode_toggle
 
 # focus the parent container
 bindsym $mod+a focus parent
@@ -170,8 +174,6 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 
 # screenshot
 bindsym Print exec --no-startup-id flameshot gui
-bindsym Control+space exec --no-startup-id dunstctl close
-bindsym Control+Shift+space exec --no-startup-id dunstctl set-paused toggle
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
