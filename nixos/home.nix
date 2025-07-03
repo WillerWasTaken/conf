@@ -5,7 +5,7 @@ let
 
   dotfileSymlink = path: mkMutableSymlink homeConfiguration.dotfilesDir path;
   configSymlink = path: mkMutableSymlink homeConfiguration.configDir path;
-  scriptSymlink = path: mkMutableSymlink homeConfiguration.scriptsDir path;
+  assetsSymlink = path: mkMutableSymlink homeConfiguration.assetsDir path;
 in {
   home.username = homeConfiguration.username;
   home.homeDirectory = homeConfiguration.homeDir;
@@ -76,6 +76,7 @@ in {
     azuredatastudio
 
     # Desktop
+    i3lock-color
     pavucontrol
     pamixer
     arandr
@@ -164,9 +165,6 @@ in {
     ".kubectl_aliases".source = builtins.fetchurl {
       url = https://raw.githubusercontent.com/ahmetb/kubectl-aliases/refs/heads/master/.kubectl_aliases;
     };
-    ".background-image".source = builtins.fetchurl {
-      url = https://cdna.artstation.com/p/assets/images/images/016/549/966/4k/hou-china-6.jpg?1552570320;
-    };
 
     ".config/kitty/kitty.conf".source = configSymlink "kitty/kitty.conf";
     ".config/kitty/current-theme.conf".source = configSymlink "kitty/current-theme.conf";
@@ -175,7 +173,8 @@ in {
     ".config/dunst".source = configSymlink "dunst";
     ".config/nvim".source = configSymlink "nvim";
 
-    "tools/scripts/lock.sh".source = scriptSymlink "lock.sh";
+    ".background-image".source = assetsSymlink "hou-china-6.jpg";
+    ".lock.png".source = assetsSymlink "rick_and_morty_lock.png";
   };
 
   programs.home-manager.enable = true;

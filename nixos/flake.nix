@@ -31,7 +31,7 @@
         confDir = "${homeDir}/conf";
         dotfilesDir = "${confDir}/dotfiles";
         configDir = "${confDir}/config";
-        scriptsDir = "${confDir}/scripts";
+        assetsDir = "${confDir}/assets";
       };
       homeManagerSpecialArgs = {
         nixVersion = systemConfiguration.nixVersion;

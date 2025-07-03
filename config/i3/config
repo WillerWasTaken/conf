@@ -22,7 +22,7 @@ bindsym $mod+Shift+s exec youtube-music
 bindsym $mod+Shift+z exec keepassxc
 
 # lock
-bindsym $mod+slash exec $HOME/tools/scripts/lock.sh
+bindsym $mod+slash exec i3lock-color --blur 10 --image ~/.lock.png --centered
 
 # suspend
 bindsym $mod+Escape exec systemctl suspend
