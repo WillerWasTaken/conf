@@ -2,14 +2,8 @@ return {
   "nvim-tree/nvim-tree.lua",
   dependencies = { "nvim-tree/nvim-web-devicons" },
   keys = {
-    { "<leader>o", function() vim.cmd("NvimTreeFindFile!") end, desc = "Tree toogle" }
+    { "<leader>O", function() vim.cmd("NvimTreeFindFile!") end, desc = "Tree toogle" }
   },
-  lazy = false,
-  init = function()
-    -- Completely disable builtin netrw in favor of nvim tree
-    vim.g.loaded_netrw = 1
-    vim.g.loaded_netrwPlugin = 1
-  end,
   opts = {
     on_attach = function(bufnr)
       local api = require('nvim-tree.api')
