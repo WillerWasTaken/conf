@@ -1,6 +1,5 @@
 local options = {
   -- Line numbers
-  relativenumber = true,
   number = true,
   -- More natural splits
   splitbelow = true,
