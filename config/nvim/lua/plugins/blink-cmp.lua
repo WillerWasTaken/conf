@@ -15,5 +15,7 @@ return {
         auto_show = true
       },
     },
+    -- Still experimental https://cmp.saghen.dev/configuration/signature.html
+    signature = { enabled = true },
   },
 }
