@@ -3,6 +3,10 @@ return {
   event = "VeryLazy",
   ---@type Flash.Config
   opts = {
+    jump = {
+      -- automatically jump when there is only one match
+      autojump = true,
+    },
     modes = {
       char = {
         -- disable f, t enhancement
