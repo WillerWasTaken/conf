@@ -147,7 +147,7 @@ bindsym $mod+y move workspace to output left
 bindsym $mod+o move workspace to output right
 
 # activate VGA left
-bindsym $mod+u exec autorandr --change
+bindsym $mod+u exec autorandr --cycle
 # bindsym $mod+u exec xrandr --output "DP1" --left-of "eDP1" --auto
 # deactivate VGA
 bindsym $mod+i exec autorandr default
