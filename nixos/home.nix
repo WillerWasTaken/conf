@@ -145,6 +145,7 @@ in {
     neovim = {
       enable = true;
       defaultEditor = true;
+      package = pkgs.unstable.neovim-unwrapped;
       extraPackages = with pkgs; [
         # LSP
         ansible-language-server
