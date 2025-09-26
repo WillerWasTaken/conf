@@ -229,3 +229,17 @@ exec nitrogen --restore
 
 # Set keyboard layout
 # exec setxkbmap -rules evdev -model evdev -layout us -variant altgr-intl
+
+assign [class="^kitty-startup$"] 1
+exec --no-startup-id i3-msg 'exec --no-startup-id kitty --class kitty-startup'
+assign [class="^rambox$"] 4
+exec --no-startup-id i3-msg 'exec --no-startup-id rambox'
+assign [class="^Signal$"] 4
+exec --no-startup-id i3-msg 'exec --no-startup-id signal-desktop'
+assign [class="^obsidian$"] 8
+exec --no-startup-id i3-msg 'exec --no-startup-id obsidian'
+assign [class="^obsidian-nvim$"] 9
+exec --no-startup-id i3-msg 'exec --no-startup-id $obsidian-cmd'
+assign [class="^Brave-browser$"] 5
+assign [class="^com.github.th_ch.youtube_music$"] 10
+exec --no-startup-id i3-msg 'exec --no-startup-id youtube-music'
