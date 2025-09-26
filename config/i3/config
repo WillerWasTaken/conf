@@ -177,6 +177,7 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 
 # screenshot
 bindsym Print exec --no-startup-id flameshot gui
+bindsym $mod+Print exec --no-startup-id "flameshot gui --raw | tesseract stdin stdout | tr -s '[:space:]\0' ' ' | sed 's/^ *//;s/ *$//' | xclip -selection clipboard"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {

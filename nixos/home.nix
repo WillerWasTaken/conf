@@ -55,6 +55,8 @@ in {
       ncdu
       magic-wormhole
       wireguard-tools
+      xclip
+      tesseract
 
       # Devops
       terraform
