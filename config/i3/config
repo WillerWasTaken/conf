@@ -10,6 +10,7 @@
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 
 set $mod Mod4
+set $obsidian-cmd kitty --title "Obsidian Nvim" --class "obsidian-nvim" nvim -c ":Obsidian workspace Second\ Brain" -c ":Obsidian quick_switch"
 
 # Browser
 bindsym $mod+b exec --no-startup-id $browser
@@ -20,6 +21,8 @@ bindsym $mod+Shift+a exec rambox
 bindsym $mod+Shift+s exec youtube-music
 # Keepassxc
 bindsym $mod+Shift+z exec keepassxc
+# Obsidian
+bindsym $mod+Shift+o exec $obsidian-cmd
 
 # lock
 bindsym $mod+slash exec i3lock-color --blur 10 --image ~/.lock.png --centered

@@ -92,6 +92,8 @@ in {
       keepassxc
       flameshot
       pdfarranger
+      # To handle through programs.obsidian.enable = true when 25.11 will be out
+      obsidian
     ] ++ builtins.filter pkgs.lib.isDerivation (builtins.attrValues pkgs.nerd-fonts);
 
     file = {
