@@ -6,13 +6,13 @@
 	d = diff
 	dc = diff --cached
 	st = status
-[pager]
-	diff =
+[init]
+	defaultBranch = main
 [pull]
 	rebase = true
 [rebase]
 	autoStash = true
 [core]
 	pager = cat
-[init]
-	defaultBranch = main
+[includeIf "gitdir:~/code/"]
+	path = ~/.gitconfig-work
