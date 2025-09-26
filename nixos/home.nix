@@ -129,6 +129,9 @@ in {
     git = {
       enable = true;
       package = pkgs.gitFull;
+      delta = {
+        enable = true;
+      };
     };
     go.enable = true;
     htop.enable = true;

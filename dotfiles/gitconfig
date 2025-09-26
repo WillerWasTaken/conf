@@ -12,7 +12,15 @@
 	rebase = true
 [rebase]
 	autoStash = true
+# delta configuration
+# https://github.com/dandavison/delta?tab=readme-ov-file#get-started
 [core]
-	pager = cat
+	pager = delta
+[delta]
+	navigate = true
+[interactive]
+	diffFilter = delta --color-only
+[merge]
+	conflictstyle = zdiff3
 [includeIf "gitdir:~/code/"]
 	path = ~/.gitconfig-work
