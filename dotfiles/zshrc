@@ -24,10 +24,12 @@ zplug "zsh-users/zsh-autosuggestions"
 zplug "plugins/z", from:oh-my-zsh
 # Move folder Ctrl+G
 zplug "andrewferrier/fzf-z"
-# Configure asdf
-zplug "plugins/asdf", from:oh-my-zsh
-# Automatic direnv
-zplug "ptavares/zsh-direnv"
+# Configure mise
+zplug "wintermi/zsh-mise"
+# # Configure asdf
+# zplug "plugins/asdf", from:oh-my-zsh
+# # Automatic direnv
+# zplug "ptavares/zsh-direnv"
 
 # Install packages that have not been installed yet
 if ! zplug check --verbose; then

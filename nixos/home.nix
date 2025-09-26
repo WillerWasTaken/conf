@@ -134,6 +134,7 @@ in {
     k9s.enable = true;
     # Conflict with kitty conf file
     # kitty.enable = true;
+    mise.enable = true;
     ripgrep.enable = true;
     rofi = {
       enable = true;
