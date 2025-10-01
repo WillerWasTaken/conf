@@ -37,6 +37,7 @@ return {
             ["<S-Tab>"] = actions.toggle_selection + actions.move_selection_worse,
             ["<C-q>"]   = actions.send_selected_to_qflist + actions.open_qflist,
             ["<M-q>"]   = actions.send_to_qflist + actions.open_qflist,
+            ["q"]       = actions.close,
           }
         }
       },
