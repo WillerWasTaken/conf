@@ -53,6 +53,7 @@ in {
       tcpdump
       ipcalc
       ncdu
+      du-dust
       magic-wormhole
       wireguard-tools
       xclip
@@ -134,6 +135,7 @@ in {
       };
     };
     go.enable = true;
+    btop.enable = true;
     htop.enable = true;
     jq.enable = true;
     k9s.enable = true;
