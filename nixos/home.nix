@@ -121,7 +121,14 @@ in {
   };
 
   programs = {
-    autorandr.enable = true;
+    autorandr = {
+      enable = true;
+      hooks = {
+        postswitch = {
+          "10-wallpaper" = "${pkgs.feh}/bin/feh --bg-scale $HOME/.background-image";
+        };
+      };
+    };
     bat.enable = true;
     direnv.enable = true;
     firefox.enable = true;
