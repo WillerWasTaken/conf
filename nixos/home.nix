@@ -165,6 +165,7 @@ in {
         docker-compose-language-service
         dockerfile-language-server-nodejs
         gopls
+        harper
         jq-lsp
         vscode-langservers-extracted
         lua-language-server
