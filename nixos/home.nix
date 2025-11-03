@@ -153,6 +153,9 @@ in {
     rofi = {
       enable = true;
       theme = "solarized_alternate";
+      extraConfig = {
+        terminal = "kitty";
+      };
     };
     neovim = {
       enable = true;
