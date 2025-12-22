@@ -53,7 +53,7 @@ in {
       tcpdump
       ipcalc
       ncdu
-      du-dust
+      dust
       magic-wormhole
       wireguard-tools
       xclip
@@ -103,7 +103,7 @@ in {
       ".vimrc".source = dotfileSymlink "vimrc";
       ".p10k.zsh".source = dotfileSymlink "p10k.zsh";
       ".gitconfig".source = dotfileSymlink "gitconfig";
-      ".zshrc".source = dotfileSymlink "zshrc";
+      ".zshrc.manual".source = dotfileSymlink "zshrc";
       ".kubectl_aliases".source = builtins.fetchurl {
         url = https://raw.githubusercontent.com/ahmetb/kubectl-aliases/refs/heads/master/.kubectl_aliases;
       };
@@ -131,14 +131,32 @@ in {
     };
     bat.enable = true;
     direnv.enable = true;
+    delta = {
+      enable = true;
+      enableGitIntegration = true;
+    };
     firefox.enable = true;
     chromium.enable = true;
     fzf.enable = true;
     git = {
       enable = true;
       package = pkgs.gitFull;
-      delta = {
-        enable = true;
+    };
+    lazygit = {
+      enable = true;
+      settings = {
+        git = {
+          # Show all branches on git log
+          log = {
+            showGraph = "always";
+            showWholeGraph = true;
+          };
+          # set delta
+          # https://github.com/jesseduffield/lazygit/blob/master/docs/Custom_Pagers.md#delta
+          pagers = [{
+            pager =  "delta --dark --paging=never";
+          }];
+        };
       };
     };
     go.enable = true;
@@ -163,10 +181,9 @@ in {
       package = pkgs.unstable.neovim-unwrapped;
       extraPackages = with pkgs; [
         # LSP
-        ansible-language-server
         nodePackages.bash-language-server
         docker-compose-language-service
-        dockerfile-language-server-nodejs
+        dockerfile-language-server
         gopls
         harper
         jq-lsp
@@ -178,6 +195,9 @@ in {
         terraform-ls
       ];
     };
+    # obsidian = {
+    #   enable = true;
+    # };
     # Conflict with .ssh/config
     # ssh.enable = true;
     zsh = {
@@ -187,6 +207,9 @@ in {
         FZF_DIR = "${config.programs.fzf.package}/share/fzf";
         ASDF_DIR = "${pkgs.asdf-vm}/share/asdf-vm";
       };
+      initContent = pkgs.lib.mkOrder 1500 ''
+        source ~/.zshrc.manual
+      '';
     };
   };
 

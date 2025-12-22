@@ -3,7 +3,6 @@ return {
   config = function()
     vim.lsp.enable({
       "rust_analyzer",
-      "ansiblels",
       "bashls",
       "docker_compose_language_service",
       "dockerls",

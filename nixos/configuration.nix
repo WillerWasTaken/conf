@@ -76,7 +76,6 @@
 
     windowManager.i3 = {
       enable = true;
-      package = pkgs.i3-gaps;
       extraPackages = with pkgs; [
         dmenu
         i3status
@@ -119,7 +118,7 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    vim_configurable
+    vim-full
   ];
 
   programs.zsh = {
