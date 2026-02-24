@@ -79,7 +79,7 @@ in {
 
       # Azure
       kubelogin
-      azure-cli
+      (azure-cli.withExtensions [ azure-cli.extensions.azure-devops azure-cli.extensions.bastion azure-cli.extensions.ssh ])
       azuredatastudio
 
       # Desktop
