@@ -87,6 +87,8 @@ alias ls='ls --color'
 alias la='ls --color -la'
 alias l='ls --color -l'
 alias ll='ls --color -l'
+alias lg='lazygit'
+alias lgl='lazygit log'
 alias grep='grep --color=auto'
 alias v=nvim
 alias g=git
