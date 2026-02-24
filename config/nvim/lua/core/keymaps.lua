@@ -1,4 +1,5 @@
 vim.g.mapleader = " "
+vim.g.maplocalleader = " "
 
 -- Quit
 vim.keymap.set("n", "<leader>q", "<cmd>q<CR>")

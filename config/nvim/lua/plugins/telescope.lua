@@ -25,7 +25,7 @@ return {
     return {
       { "<leader>f", builtin.find_files },
       { "<leader>F", function() builtin.find_files({hidden=true}) end },
-      { "<leader>s", builtin.live_grep },
+      { "<leader>S", builtin.live_grep },
       { "<leader>b", builtin.buffers },
     }
   end,
