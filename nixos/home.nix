@@ -60,6 +60,8 @@ in {
       tesseract
 
       # Devops
+      podman-compose
+      dive
       terraform
       terraform-docs
       krew
