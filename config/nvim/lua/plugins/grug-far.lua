@@ -1,5 +1,7 @@
 return {
   "MagicDuck/grug-far.nvim",
+  -- Available options
+  -- https://github.com/MagicDuck/grug-far.nvim/blob/main/lua/grug-far/opts.lua
   opts = {
     keymaps = {
       close = { n = "q" },
