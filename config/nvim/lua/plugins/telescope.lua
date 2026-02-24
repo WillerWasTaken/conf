@@ -16,9 +16,10 @@ return {
   keys = function()
     local builtin = require("telescope.builtin")
     return {
-      { "<leader>f", function() builtin.find_files() end },
+      { "<leader>f", builtin.find_files },
       { "<leader>F", function() builtin.find_files({hidden=true}) end },
-      { "<leader>s", function() builtin.live_grep() end }
+      { "<leader>s", builtin.live_grep },
+      { "<leader>b", builtin.buffers },
     }
   end,
   opts = function()

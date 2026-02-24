@@ -13,7 +13,7 @@ return {
     },
   },
   keys = {
-    { "<leader>g", function() vim.cmd("G") end, desc = "Toggle fugitive", mode = {"n"}}
+    { "<leader>G", function() vim.cmd("G") end, desc = "Toggle fugitive", mode = {"n"}}
   },
   lazy = false
 }
