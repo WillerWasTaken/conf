@@ -42,7 +42,7 @@
   # Set your time zone.
   time.timeZone = systemConfiguration.timeZone;
 
-  # Select internationalisation properties.
+  # Select internationalization properties.
   i18n.defaultLocale = systemConfiguration.defaultLocale;
 
   i18n.extraLocaleSettings = with systemConfiguration; {
