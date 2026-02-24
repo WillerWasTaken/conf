@@ -77,6 +77,9 @@ in {
       rustc
       clang
 
+      # AI
+      luajitPackages.tiktoken_core
+
       # Azure
       kubelogin
       (azure-cli.withExtensions [ azure-cli.extensions.azure-devops azure-cli.extensions.bastion azure-cli.extensions.ssh ])
