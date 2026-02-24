@@ -11,6 +11,13 @@ return {
       config = function()
         require("telescope").load_extension("fzf")
       end
+    },
+    {
+      "nvim-telescope/telescope-ui-select.nvim",
+      config = function()
+        -- sets telescope as global picker `vim.ui.select`
+        require("telescope").load_extension("ui-select")
+      end
     }
   },
   keys = function()
