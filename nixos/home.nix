@@ -59,6 +59,12 @@ in {
       xclip
       tesseract
 
+      # database
+      dbeaver-bin
+      postgresql
+      # mssql
+      azuredatastudio
+
       # Devops
       podman-compose
       dive
@@ -83,7 +89,6 @@ in {
       # Azure
       kubelogin
       (azure-cli.withExtensions [ azure-cli.extensions.azure-devops azure-cli.extensions.bastion azure-cli.extensions.ssh ])
-      azuredatastudio
 
       # Desktop
       i3lock-color
