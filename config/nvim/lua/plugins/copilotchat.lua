@@ -7,6 +7,9 @@ return {
   opts = {
     -- Default model is "gpt-4.1"; override with best Claude via Copilot
     model = "claude-sonnet-4.6",
+    mappings = {
+      reset = false
+    },
   },
   keys = function()
     local copilot = require("CopilotChat")
