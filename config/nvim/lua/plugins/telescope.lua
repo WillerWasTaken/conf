@@ -22,10 +22,22 @@ return {
   },
   keys = function()
     local builtin = require("telescope.builtin")
+    local get_git_root = function()
+      return vim.fn.trim(vim.fn.system("git rev-parse --git-common-dir"))
+    end
     return {
-      { "<leader>f", builtin.find_files },
-      { "<leader>F", function() builtin.find_files({hidden=true}) end },
-      { "<leader>S", builtin.live_grep },
+      { "<leader>f", builtin.find_files, desc = "Find files in the current directory" },
+      { "<leader>gf", function()
+          return builtin.find_files({cwd=get_git_root()})
+        end, desc = "Find files from the git root"},
+      { "<leader>F", function() builtin.find_files({hidden=true}) end, desc = "Find files including hidden files" },
+      { "<leader>gF", function()
+          return builtin.find_files({cwd=get_git_root(), hidden=true})
+        end, desc = "Find files including hidden files from the git root"},
+      { "<leader>S", builtin.live_grep, desc = "Live grep in the current directory" },
+      { "<leader>gS", function()
+          return builtin.live_grep({cwd=get_git_root()})
+        end, desc = "Live grep from the git root" },
       { "<leader>b", builtin.buffers },
     }
   end,

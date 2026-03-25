@@ -6,6 +6,7 @@
 	d = diff
 	dc = diff --cached
 	st = status
+	clb = !sh -c 'git clone --bare "$1" "$(basename "$1" .git)" && cd "$(basename "$1" .git)" && git config remote.origin.fetch "+refs/heads/*:refs/remotes/origin/*" && git fetch origin' -
 	# https://stackoverflow.com/a/9074343
 	lg1 = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(auto)%d%C(reset)' --all
 	lg2 = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(auto)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)'
