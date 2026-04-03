@@ -12,9 +12,9 @@ local options = {
   -- keep 5 lines at least between the cursor and the end of the buffer
   scrolloff = 5,
   -- Default indentation
-  tabstop = 4,
-  softtabstop = 4,
-  shiftwidth = 4,
+  tabstop = 2,
+  softtabstop = 2,
+  shiftwidth = 2,
   expandtab = true,
   -- Display column for the 120th character
   colorcolumn = '120',
