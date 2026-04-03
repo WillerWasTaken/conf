@@ -200,6 +200,9 @@ in {
         python3Packages.python-lsp-server
         rust-analyzer
         terraform-ls
+
+        # Treesitter
+        tree-sitter
       ];
     };
     opencode = {

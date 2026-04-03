@@ -1,12 +1,10 @@
 return {
-  'nvim-treesitter/nvim-treesitter',
-  build = ":TSUpdate",
-  dependencies = {
-    "nvim-treesitter/nvim-treesitter-textobjects",
-    "nvim-treesitter/nvim-treesitter-context",
-  },
-  opts = {
-    ensure_installed = {
+  "nvim-treesitter/nvim-treesitter",
+  lazy = false,
+  build = ':TSUpdate',
+  branch = 'main',
+  config = function()
+    local parsers = {
       "bash",
       "c",
       "comment",
@@ -47,50 +45,26 @@ return {
       "vimdoc",
       "xml",
       "yaml"
-    },
-    -- Consistent syntax highlighting
-    highlight = {
-      enable = true,
-      additional_vim_regex_highlighting = false
-    },
-    textobjects = {
-      select = {
-        enable = true,
-        -- Automatically jump forward to textobj, similar to targets.vim
-        lookahead = true,
-        keymaps = {
-          ["af"] = "@function.outer",
-          ["if"] = "@function.inner",
-          ["ac"] = "@class.outer",
-          ["ic"] = "@class.inner",
-          ["aa"] = "@parameter.outer",
-          ["ia"] = "@parameter.inner",
-          ["as"] = "@assignment.outer",
-          ["is"] = "@assignment.inner",
-        },
-      },
-      move = {
-        enable = true,
-        set_jumps = true,
-        goto_next_start = {
-            ["<C-Down>"] = "@function.outer",
-        },
-        goto_previous_start = {
-            ["<C-Up>"] = "@function.outer",
-        },
-      },
-      swap = {
-        enable = true,
-        swap_previous = {
-            ["<leader>pl"] = "@parameter.inner",
-        },
-        swap_next = {
-            ["<leader>pr"] = "@parameter.inner",
-        },
-      },
-    },
+    }
+    require('nvim-treesitter').install(parsers)
+    vim.api.nvim_create_autocmd('FileType', {
+      callback = function(args)
+        local buf, filetype = args.buf, args.match
+
+        local language = vim.treesitter.language.get_lang(filetype)
+        if not language then return end
+
+        -- if parser exists, load it
+        if not vim.treesitter.language.add(language) then return end
+        -- enable syntax highlighting, folds
+
+        vim.treesitter.start(buf, language)
+        -- ...and indentation
+        -- vim.bo.indentexpr = "v:lua-require'nvim-treesitter'.indentexpr()"
+      end
+    })
+  end,
+  opts = {
+    auto_install = false,
   },
-  config = function(_, opts)
-    require("nvim-treesitter.configs").setup(opts)
-  end
 }
