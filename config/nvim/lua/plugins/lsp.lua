@@ -17,17 +17,25 @@ return {
     })
 
     vim.lsp.config('harper_ls', {
-    settings = {
-      ["harper-ls"] = {
-        linters = {
-          SentenceCapitalization = false
+      settings = {
+        ["harper-ls"] = {
+          linters = {
+            SentenceCapitalization = false
+          }
         }
       }
-    }
     })
 
-    vim.api.nvim_create_autocmd({"BufWritePre"}, {
-      pattern = {"*.tf", "*.tfvars", "*.hcl"},
+    vim.lsp.config("lua_ls", {
+      settings = {
+        Lua = {
+          workspace = { library = vim.api.nvim_get_runtime_file("", true) },
+        },
+      },
+    })
+
+    vim.api.nvim_create_autocmd({ "BufWritePre" }, {
+      pattern = { "*.tf", "*.tfvars", "*.hcl", "*.lua" },
       callback = function()
         vim.lsp.buf.format()
       end,
