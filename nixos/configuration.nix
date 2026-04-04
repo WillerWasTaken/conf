@@ -9,13 +9,22 @@
     [ # Include the results of the hardware scan.
       /etc/nixos/hardware-configuration.nix
     ];
+
+  # Wayland environment variables
+  environment.variables = {
+    NIXOS_OZONE_WL = "1";
+    MOZ_ENABLE_WAYLAND = "1";
+    ELECTRON_OZONE_PLATFORM_HINT = "auto";
+    XDG_CURRENT_DESKTOP = "Hyprland";
+    WLR_NO_HARDWARE_CURSORS = "1";  # needed for NVIDIA
+  };
   # Use localtime just like windows for dual boot
   # https://nixos.wiki/wiki/Dual_Booting_NixOS_and_Windows
   time.hardwareClockInLocalTime = true;
 
-  # Bootloader.
+  # Bootloader
   boot = {
-    kernelPackages = pkgs.linuxPackages_latest;
+    kernelPackages = pkgs.linuxPackages_6_18;
     loader = {
       systemd-boot = {
         enable = true;
@@ -62,28 +71,37 @@
   services.gvfs.enable = true;
   services.udisks2.enable = true;
 
-  # Configure keymap in X11
-  services.xserver = {
+  # Hyprland (Wayland)
+  programs.hyprland = {
     enable = true;
+    # Recommended way to launch Hyprland, notably triggers the graphical-session systemd target properly
+    withUWSM = true;
+  };
 
-    desktopManager = {
-      xterm.enable = false;
-    };
-
-    displayManager = {
-      lightdm.enable = true;
-    };
-
-    windowManager.i3 = {
-      enable = true;
-      extraPackages = with pkgs; [
-        dmenu
-        i3status
-        i3lock
-        i3blocks
-     ];
+  # Login manager (regreet via greetd + cage)
+  programs.regreet = {
+    enable = true;
+    settings = {
+      GTK.application_prefer_dark_theme = true;
     };
   };
+  # regreet module enables greetd automatically, override session command to launch Hyprland
+  services.greetd.settings.default_session.command = let
+    hyprlandConfig = pkgs.writeText "greetd-hyprland-config" ''
+      exec-once = ${pkgs.regreet}/bin/regreet; hyprctl dispatch exit
+    '';
+  in "${pkgs.hyprland}/bin/Hyprland --config ${hyprlandConfig}";
+
+  # XDG portal for screen sharing, file dialogs, etc.
+  xdg.portal = {
+    enable = true;
+    extraPortals = [
+      pkgs.xdg-desktop-portal-hyprland
+      pkgs.xdg-desktop-portal-gtk
+    ];
+  };
+
+  security.polkit.enable = true;
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
@@ -124,7 +142,6 @@
   programs.zsh = {
     enable = true;
   };
-  programs.i3lock.enable = true;
 
   programs.nm-applet.enable = true;
   programs.thunar.enable = true;
