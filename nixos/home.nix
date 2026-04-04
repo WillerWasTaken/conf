@@ -15,9 +15,9 @@ in {
     };
   };
 
-  xsession = {
-    enable = true;
-  };
+  # Not to conflict with hyprland using UWSM
+  # https://wiki.hypr.land/Useful-Utilities/Systemd-start/
+  wayland.windowManager.hyprland.systemd.enable = false;
 
   # Enable font discovery through home manager
   fonts.fontconfig.enable = true;
@@ -27,10 +27,6 @@ in {
     homeDirectory = homeConfiguration.homeDir;
 
     stateVersion = nixVersion;
-    keyboard = {
-      layout = homeConfiguration.kbLayout;
-      variant = homeConfiguration.kbVariant;
-    };
 
     packages = with pkgs; [
       kitty
@@ -46,8 +42,7 @@ in {
       dig
       openssl
       imagemagick
-      scrot
-      xsel
+      wl-clipboard
       tree
       yq-go
       tcpdump
@@ -56,7 +51,6 @@ in {
       dust
       magic-wormhole
       wireguard-tools
-      xclip
       tesseract
 
       # database
@@ -87,20 +81,29 @@ in {
       kubelogin
       (azure-cli.withExtensions [ azure-cli.extensions.azure-devops azure-cli.extensions.bastion azure-cli.extensions.ssh ])
 
-      # Desktop
-      i3lock-color
+      # Desktop (Wayland / Hyprland)
+      hyprlock
+      hypridle
+      hyprpaper
+      hyprlandPlugins.hy3
+      waybar
+      mako
+      libnotify
+      brightnessctl
+      wdisplays
+      hyprprop
+      grim
+      slurp
       pavucontrol
       pamixer
-      arandr
-      polybarFull
-      dunst
+      networkmanagerapplet
+      grimblast
 
       # Graphical
       youtube-music
       unstable.rambox
       signal-desktop
       keepassxc
-      flameshot
       pdfarranger
       # To handle through programs.obsidian.enable = true when 25.11 will be out
       obsidian
@@ -117,9 +120,13 @@ in {
 
       ".config/kitty/kitty.conf".source = configSymlink "kitty/kitty.conf";
       ".config/kitty/current-theme.conf".source = configSymlink "kitty/current-theme.conf";
-      ".config/i3/config".source = configSymlink "i3/config";
-      ".config/polybar".source = configSymlink "polybar";
-      ".config/dunst".source = configSymlink "dunst";
+      ".config/hypr".source = configSymlink "hypr";
+      ".config/uwsm/env-hyprland".text = ''
+        export HY3_PLUGIN=${pkgs.hyprlandPlugins.hy3}/lib/libhy3.so
+      '';
+      ".config/waybar".source = configSymlink "waybar";
+      ".config/kanshi/config".source = configSymlink "kanshi/config";
+      ".config/mako/config".source = configSymlink "mako/config";
       ".config/nvim".source = configSymlink "nvim";
 
       ".background-image".source = assetsSymlink "hou-china-6.jpg";
@@ -128,14 +135,6 @@ in {
   };
 
   programs = {
-    autorandr = {
-      enable = true;
-      hooks = {
-        postswitch = {
-          "10-wallpaper" = "${pkgs.feh}/bin/feh --bg-scale $HOME/.background-image";
-        };
-      };
-    };
     bat.enable = true;
     direnv.enable = true;
     delta = {
@@ -213,6 +212,15 @@ in {
     # };
     # Conflict with .ssh/config
     # ssh.enable = true;
+    swappy = {
+      enable = true;
+      settings = {
+        # https://github.com/jtheoof/swappy#config
+        Default = {
+          early_exit = true;
+        };
+      };
+    };
     zsh = {
       enable = true;
       sessionVariables = {
@@ -236,10 +244,9 @@ in {
   # };
 
   services = {
-    network-manager-applet.enable = true;
     blueman-applet.enable = true;
-    picom.enable = true;
     playerctld.enable = true;
+    kanshi.enable = true;
   };
 
   programs.home-manager.enable = true;

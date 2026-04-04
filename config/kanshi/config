@@ -1,0 +1,4 @@
+profile "home" {
+  output "eDP-1" mode 2560x1600@165.00000Hz position 0,0 scale 1.00
+  output "DP-9" mode 3440x1440@49.95300Hz position 2560,0 scale 1.00
+}

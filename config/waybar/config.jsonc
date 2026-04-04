@@ -1,0 +1,158 @@
+{
+  // Taken from https://github.com/Alexays/Waybar/wiki/Examples#sephid86s-configuration
+  "modules-left": [
+    "hyprland/workspaces"
+  ],
+  "modules-center": [
+    // # Waybar launches immediately, then restarts after 60s to work around
+    // # mpris module bug where position/metadata freezes on first launch, using a custom module instead
+    // # https://github.com/Alexays/Waybar/issues/4159
+    // exec-once = waybar& sleep 60 && pkill waybar && waybar
+    // "mpris"
+
+    "custom/player"
+  ],
+  "modules-right": [
+    "disk",
+    "cpu",
+    "memory",
+    "network",
+    "bluetooth",
+    "pulseaudio",
+    "battery",
+    "clock",
+    "tray",
+    "custom/notification"
+  ],
+  "hyprland/workspaces": {
+    "disable-scroll": true,
+    "all-outputs": true,
+    "warp-on-scroll": false,
+    "format": "{name}: {icon} ",
+    "format-icons": {
+      "1": "",
+      "2": "",
+      "3": "",
+      "4": "",
+      "8": "󱙔",
+      "9": "󰧑",
+      "10": "",
+      "default": ""
+    }
+  },
+  "tray": {
+    "icon-size": 21
+  },
+  "mpris": {
+    "dynamic-order": [
+      "title",
+      "artist",
+      "position",
+      "length"
+    ],
+    "format": "{status_icon} | {dynamic}",
+    "status-icons": {
+      "paused": "⏸",
+      "playing": "▶",
+      "stopped": "⏹"
+    },
+    "interval": 1
+  },
+  "clock": {
+    // "timezone": "America/New_York",
+    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+    //"format-alt": "{:%Y-%m-%d}"
+    // "format": "{:L%Y-%m-%d<small>[%a]</small> <tt><small>%p</small></tt>%I:%M}"
+    "format": "{:%d/%m/%Y %H:%M}"
+  },
+  "disk": {
+    "format": "󰆼 {percentage_used}%",
+  },
+  "cpu": {
+    "format": " {usage}%",
+  },
+  "memory": {
+    "format": " {}%"
+  },
+  "battery": {
+    "states": {
+      // "good": 95,
+      "warning": 30,
+      "critical": 15
+    },
+    "format": "{icon}  {capacity}%",
+    "format-charging": "  {capacity}%",
+    "format-plugged": "  {capacity}%",
+    "format-alt": "{icon}  {time}",
+    // "format-good": "", // An empty format will hide the module
+    // "format-full": "",
+    "format-icons": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ]
+  },
+  "network": {
+    // "interface": "wlp2*", // (Optional) To force the use of this interface
+    "format-wifi": "{essid} ({signalStrength}%) ",
+    "format-ethernet": " {ifname}",
+    "tooltip-format": " {ifname} via {gwaddr}",
+    "format-linked": " {ifname} (No IP)",
+    "format-disconnected": "Disconnected ⚠ {ifname}",
+    "format-alt": " {ifname}: {ipaddr}/{cidr}"
+  },
+  "bluetooth": {
+    "format": " {status}",
+    "format-connected": " {device_alias}",
+    "format-connected-battery": " {device_alias} {device_battery_percentage}%",
+    "tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected",
+    "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
+    "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
+    "tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}%"
+  },
+  "pulseaudio": {
+    "scroll-step": 5, // %, can be a float
+    "format": "{icon}   {volume}% {format_source}",
+    "format-bluetooth": " {volume}% {format_source}",
+    "format-bluetooth-muted": "  {format_source}",
+    "format-muted": "  {format_source}",
+    "format-source": " {volume}%",
+    "format-source-muted": "",
+    "format-icons": {
+      // "headphone": "",
+      // "hands-free": "",
+      // "headset": "",
+      // "phone": "",
+      // "portable": "",
+      // "car": "",
+      "default": [
+        "",
+        "",
+        ""
+      ]
+    },
+    "on-click": "pavucontrol",
+    "on-click-right": "foot -a pw-top pw-top"
+  },
+  // as mpris is buggy
+  // https://github.com/Alexays/Waybar/issues/2392#issuecomment-1688269410
+  "custom/player": {
+    "format": "{icon}{text}",
+    "return-type": "json",
+    "format-icons": {
+      "Playing": " ",
+      "Paused": " "
+    },
+    "max-length":70,
+    "exec": "playerctl -a metadata --format '{\"text\": \"{{markup_escape(artist)}} - {{markup_escape(title)}}\", \"tooltip\": \"{{markup_escape(title)}}\", \"alt\": \"{{status}}\", \"class\": \"{{status}}\"}' -F",
+    "on-click": "playerctl play-pause"
+  },
+  "custom/notification": {
+    "exec": "makoctl mode 2>/dev/null | grep -q do-not-disturb && echo '' || echo ''",
+    "exec-if": "which makoctl",
+    "interval": 1,
+    "on-click": "makoctl mode -t do-not-disturb"
+  }
+}
