@@ -4,13 +4,18 @@ return {
   dependencies = {
     "nvim-lua/plenary.nvim",
     {
-      "airblade/vim-gitgutter",
-      init = function ()
-        -- Update signs as soon as save is performed to avoid the delay
-        vim.api.nvim_create_autocmd({ "BufWritePost" }, {
-          pattern = {"*"},
-          callback = function() vim.cmd("GitGutter") end,
-        })
+      "lewis6991/gitsigns.nvim",
+      keys = function()
+        local gitsigns = require("gitsigns")
+        return {
+          { "<leader>hp", gitsigns.preview_hunk_inline,             desc = "Preview hunk" },
+          { "<leader>hu", gitsigns.reset_hunk,                      desc = "Undo hunk" },
+          { "<leader>hs", gitsigns.stage_hunk,                      desc = "Stage hunk" },
+          { "<leader>gb", gitsigns.blame,                           desc = "Toggle blame" },
+          { "<leader>hd", gitsigns.diffthis,                        desc = "Diff this" },
+          { "]c",         function() gitsigns.nav_hunk("next") end, desc = "Preview hunk" },
+          { "[c",         function() gitsigns.nav_hunk("prev") end, desc = "Preview hunk" },
+        }
       end
     },
     -- diff tool
@@ -64,8 +69,8 @@ return {
   keys = function()
     local neogit = require("neogit")
     return {
-        { "<leader>gg", function() neogit.open({ kind = "floating" }) end , desc = "Show Neogit UI" },
-        { "<leader>gd", function() vim.cmd("CodeDiff") end, desc = "Toggle codediff" }
+      { "<leader>gg", function() neogit.open({ kind = "floating" }) end, desc = "Show Neogit UI" },
+      { "<leader>gd", function() vim.cmd("CodeDiff") end,                desc = "Toggle codediff" }
     }
   end
 }
