@@ -1,6 +1,9 @@
 return {
   "knubie/vim-kitty-navigator",
   lazy = false,
+  init = function()
+    vim.g.kitty_navigator_enable_stack_layout = 1
+  end
   -- Bindings handled in the kitty configuration
   -- keys = {
   --   {"<C-h>", function() vim.cmd("KittyNavigateLeft") end, desc = "Move left a Split", mode = {"n"}},
