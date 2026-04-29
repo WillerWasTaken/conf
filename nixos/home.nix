@@ -120,6 +120,7 @@ in {
 
       ".config/kitty/kitty.conf".source = configSymlink "kitty/kitty.conf";
       ".config/kitty/current-theme.conf".source = configSymlink "kitty/current-theme.conf";
+      ".config/kitty/zoom.py".source = configSymlink "kitty/zoom.py";
       ".config/hypr".source = configSymlink "hypr";
       ".config/uwsm/env-hyprland".text = ''
         export HY3_PLUGIN=${pkgs.hyprlandPlugins.hy3}/lib/libhy3.so
