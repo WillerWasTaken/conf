@@ -1,5 +1,8 @@
 return {
   "ThePrimeagen/git-worktree.nvim",
+  opts = {
+    update_on_change_command = "Telescope find_files hidden=true",
+  },
   dependencies = {
     "nvim-lua/plenary.nvim"
   },
@@ -8,7 +11,8 @@ return {
     local git_worktree = require("git-worktree")
     return {
       { "<leader>gw", telescope_git_worktree.git_worktree, desc = "Open git worktree" },
-      { "<leader>gW",
+      {
+        "<leader>gW",
         function()
           local branches = vim.fn.systemlist("git branch -r --format='%(refname:short)'")
           local remote = "origin"
@@ -27,18 +31,22 @@ return {
 
             if choice == "[Custom]" then
               vim.ui.input({ prompt = "Enter branch name: " }, function(input)
-                  if input and input ~= "" then
-                    git_worktree.create_worktree(input, input, "origin")
-                  end
-                end)
+                if input and input ~= "" then
+                  git_worktree.create_worktree(input, input, "origin")
+                end
+              end)
             else
               git_worktree.create_worktree(choice, choice, "origin")
             end
           end)
-        end, desc = "Create a new git worktree" },
+        end,
+        desc = "Create a new git worktree"
+      },
     }
   end,
-  config = function()
+  config = function(_, opts)
+    require("git-worktree").setup(opts)
+
     require("telescope").load_extension("git_worktree")
 
     local git_worktree = require("git-worktree")
