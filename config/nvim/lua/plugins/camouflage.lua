@@ -1,7 +1,11 @@
 return {
   "zeybek/camouflage.nvim",
   event = "VeryLazy",
-  opts = {},
+  opts = {
+    pwned = {
+      enabled = false,
+    },
+  },
   keys = function()
     local camouflage = require("camouflage")
     return {
