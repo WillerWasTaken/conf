@@ -105,8 +105,6 @@ in {
       signal-desktop
       keepassxc
       pdfarranger
-      # To handle through programs.obsidian.enable = true when 25.11 will be out
-      obsidian
     ] ++ builtins.filter pkgs.lib.isDerivation (builtins.attrValues pkgs.nerd-fonts);
 
     file = {
@@ -208,9 +206,22 @@ in {
     opencode = {
       enable = true;
     };
-    # obsidian = {
-    #   enable = true;
-    # };
+    obsidian = {
+      enable = true;
+      defaultSettings = {
+        appearance = {
+          theme = "obsidian";
+        };
+      };
+      vaults = {
+        Second_Brain = {
+          target = "vaults/Second Brain";
+          settings = {
+          corePlugins = config.programs.obsidian.defaultSettings.corePlugins ++ [ "sync" ];
+          };
+        };
+      };
+    };
     # Conflict with .ssh/config
     # ssh.enable = true;
     swappy = {
