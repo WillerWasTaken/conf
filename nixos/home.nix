@@ -127,6 +127,20 @@ in {
       ".config/kanshi/config".source = configSymlink "kanshi/config";
       ".config/mako/config".source = configSymlink "mako/config";
       ".config/nvim".source = configSymlink "nvim";
+      # Waiting for the programs.opencode.skills to be available in home-manager 26.05
+      ".config/opencode/skills/caveman".source = (builtins.fetchGit {
+         url = "https://github.com/juliusbrussee/caveman";
+         ref = "main";
+       }) + "/skills/caveman";
+      # Waiting for the programs.opencode.rules to be available in home-manager 26.05
+      ".config/opencode/AGENTS.md".text = ''
+        # Global Instructions
+
+        At the start of every conversation, always invoke the caveman skill:
+        skill({ name: "caveman" })
+
+        Continue using the caveman style for all responses unless explicitly told to stop or use normal mode.
+      '';
 
       ".background-image".source = assetsSymlink "hou-china-6.jpg";
       ".lock.png".source = assetsSymlink "rick_and_morty_lock.png";
@@ -205,6 +219,13 @@ in {
     };
     opencode = {
       enable = true;
+      # Will be available in 26-05 version
+      # skills = {
+      #   caveman = (builtins.fetchGit {
+      #     url = "https://github.com/juliusbrussee/caveman";
+      #     ref = "main";
+      #   }) + "/skills/caveman";
+      # };
     };
     obsidian = {
       enable = true;
