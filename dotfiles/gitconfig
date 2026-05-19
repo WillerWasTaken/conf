@@ -29,5 +29,5 @@
 	diffFilter = delta --color-only
 [merge]
 	conflictstyle = zdiff3
-[includeIf "gitdir:~/code/"]
+[includeIf "gitdir:~/work/"]
 	path = ~/.gitconfig-work
