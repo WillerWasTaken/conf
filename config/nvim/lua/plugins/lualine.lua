@@ -1,8 +1,13 @@
+local function maximize_status()
+  return vim.t.maximized and '   ' or ''
+end
+
 return {
   "nvim-lualine/lualine.nvim",
   dependencies = { "nvim-tree/nvim-web-devicons" },
   opts = {
     sections = {
+      lualine_c = { maximize_status },
       lualine_x = {
         -- Display statusline with "%S"
         -- https://github.com/folke/noice.nvim/issues/579#issuecomment-1821715523
@@ -28,7 +33,7 @@ return {
         "encoding", "fileformat", "filetype" },
     },
   },
-  init = function ()
+  init = function()
     -- Use lualine to show commands
     vim.opt.showcmdloc = "statusline"
   end
