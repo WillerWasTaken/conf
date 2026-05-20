@@ -16,6 +16,8 @@ local options = {
   softtabstop = 2,
   shiftwidth = 2,
   expandtab = true,
+  -- Refocus last tab each time on tab closure
+  tabclose = "uselast",
   -- Display column for the 120th character
   colorcolumn = '120',
   -- Show trailing whitespaces as dashes
