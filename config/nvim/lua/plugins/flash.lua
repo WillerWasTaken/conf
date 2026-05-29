@@ -22,6 +22,15 @@ return {
       { "S", mode = { "n", "x", "o" }, flash.treesitter, desc = "Flash Treesitter" },
       { "r", mode = "o", flash.remote, desc = "Remote Flash" },
       { "R", mode = { "o", "x" }, flash.treesitter_search, desc = "Treesitter Search" },
+      { "<C-space>", mode = { "n", "x", "o" }, function()
+        flash.treesitter({
+          actions = {
+            ["<c-space>"] = "next",
+            ["<BS>"] = "prev"
+          }
+        })
+        end, desc = "Treesitter incremental selection"
+      },
     }
   end
 }
