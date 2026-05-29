@@ -19,6 +19,15 @@ in {
   # https://wiki.hypr.land/Useful-Utilities/Systemd-start/
   wayland.windowManager.hyprland.systemd.enable = false;
 
+  # Configure gtk especially to set iconTheme, e.g pavucontrol using emblem-default not available in default gtk4
+  gtk = {
+    enable = true;
+    iconTheme = {
+      name = "Papirus"; # or "Papirus-Dark"
+      package = pkgs.papirus-icon-theme;
+    };
+  };
+
   # Enable font discovery through home manager
   fonts.fontconfig.enable = true;
 
@@ -79,7 +88,7 @@ in {
 
       # Azure
       kubelogin
-      (azure-cli.withExtensions [ azure-cli.extensions.azure-devops azure-cli.extensions.bastion azure-cli.extensions.ssh ])
+      (azure-cli.withExtensions [ azure-cli.extensions.azure-devops azure-cli.extensions.rdbms-connect azure-cli.extensions.bastion azure-cli.extensions.ssh ])
 
       # Desktop (Wayland / Hyprland)
       hyprlock
@@ -105,6 +114,7 @@ in {
       signal-desktop
       keepassxc
       pdfarranger
+      brave
     ] ++ builtins.filter pkgs.lib.isDerivation (builtins.attrValues pkgs.nerd-fonts);
 
     file = {
@@ -214,7 +224,7 @@ in {
         terraform-ls
 
         # Treesitter
-        tree-sitter
+        unstable.tree-sitter
       ];
     };
     opencode = {

@@ -8,7 +8,29 @@
   imports =
     [ # Include the results of the hardware scan.
       /etc/nixos/hardware-configuration.nix
+      "${builtins.fetchGit { url = "https://github.com/NixOS/nixos-hardware.git"; }}/common/gpu/nvidia/ada-lovelace"
+      "${builtins.fetchGit { url = "https://github.com/NixOS/nixos-hardware.git"; }}/common/gpu/amd"
+      "${builtins.fetchGit { url = "https://github.com/NixOS/nixos-hardware.git"; }}/common/cpu/amd"
     ];
+
+  boot = {
+    kernelParams = [
+      "acpi_backlight=native"
+    ];
+    blacklistedKernelModules = [ "nouveau" ];
+  };
+
+  # NVIDIA driver needed for external display ports (wired to dGPU)
+  services.xserver.videoDrivers = [ "nvidia" ];
+  hardware.nvidia = {
+    modesetting.enable = true;
+    open = false;
+    prime = {
+      reverseSync.enable = true;
+      amdgpuBusId = "PCI:101:0:0";
+      nvidiaBusId = "PCI:100:0:0";
+    };
+  };
 
   # Wayland environment variables
   environment.variables = {
@@ -161,6 +183,10 @@
       #  dns_enabled = true;
       #};
     };
+  };
+
+  programs.steam = {
+    enable = true;
   };
 
   # Some programs need SUID wrappers, can be configured further or are

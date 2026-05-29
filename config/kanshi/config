@@ -2,3 +2,28 @@ profile "home" {
   output "eDP-1" mode 2560x1600@165.00000Hz position 0,0 scale 1.00
   output "DP-9" mode 3440x1440@49.95300Hz position 2560,0 scale 1.00
 }
+
+profile "office-dp" {
+  output "DP-2" mode 2560x1440@59.95100Hz position 0,0 scale 1.00
+  output "eDP-1" mode 2560x1600@165.00000Hz position 2560,0 scale 1.00
+}
+
+profile "office-hdmi" {
+    output "eDP-1" mode 2560x1600@165.00000Hz position 1920,0 scale 1.00
+    output "HDMI-A-1" mode 1920x1080@60.00000Hz position 0,0 scale 1.00
+}
+
+profile "office-dp10" {
+    output "eDP-1" mode 2560x1600@165.00000Hz position 2560,0 scale 1.00
+    output "DP-10" mode 2560x1440@74.97100Hz position 0,0 scale 1.00
+}
+
+profile "office-dp9" {
+    output "eDP-1" mode 2560x1600@165.00000Hz position 2560,0 scale 1.00
+    output "DP-9" mode 2560x1440@74.97100Hz position 0,0 scale 1.00
+}
+
+profile "office-dp5" {
+    output "eDP-1" mode 2560x1600@165.00000Hz position 1920,0 scale 1.00
+    output "DP-5" mode 1920x1080@60.00000Hz position 0,0 scale 1.00
+}
