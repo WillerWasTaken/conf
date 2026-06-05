@@ -36,8 +36,9 @@ return {
   keys = function()
     local neogit = require("neogit")
     return {
-      { "<leader>gg", neogit.open,                        desc = "Show Neogit UI" },
-      { "<leader>gd", function() vim.cmd("CodeDiff") end, desc = "Toggle codediff" }
+      { "<leader>gg", neogit.open,                                desc = "Show Neogit UI" },
+      { "<leader>gl", function() vim.cmd("NeogitLogCurrent") end, desc = "Get log the current file" },
+      { "<leader>gd", function() vim.cmd("CodeDiff") end,         desc = "Toggle codediff" }
     }
   end
 }
