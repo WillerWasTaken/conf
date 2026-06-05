@@ -90,7 +90,7 @@
     hyprlandConfig = pkgs.writeText "greetd-hyprland-config" ''
       exec-once = ${pkgs.regreet}/bin/regreet; hyprctl dispatch exit
     '';
-  in "${pkgs.hyprland}/bin/Hyprland --config ${hyprlandConfig}";
+  in "${pkgs.hyprland}/bin/start-hyprland -- --config ${hyprlandConfig}";
 
   # XDG portal for screen sharing, file dialogs, etc.
   xdg.portal = {

@@ -19,6 +19,15 @@ in {
   # https://wiki.hypr.land/Useful-Utilities/Systemd-start/
   wayland.windowManager.hyprland.systemd.enable = false;
 
+  # Configure gtk especially to set iconTheme, e.g pavucontrol using emblem-default not available in default gtk4
+  gtk = {
+    enable = true;
+    iconTheme = {
+      name = "Papirus"; # or "Papirus-Dark"
+      package = pkgs.papirus-icon-theme;
+    };
+  };
+
   # Enable font discovery through home manager
   fonts.fontconfig.enable = true;
 
@@ -77,9 +86,27 @@ in {
       rustc
       clang
 
+      # Nvim
+      ## LSP
+      bash-language-server
+      docker-compose-language-service
+      dockerfile-language-server
+      gopls
+      harper
+      jq-lsp
+      vscode-langservers-extracted
+      lua-language-server
+      nginx-language-server
+      python3Packages.python-lsp-server
+      rust-analyzer
+      terraform-ls
+
+      ## Treesitter
+      tree-sitter
+
       # Azure
       kubelogin
-      (azure-cli.withExtensions [ azure-cli.extensions.azure-devops azure-cli.extensions.bastion azure-cli.extensions.ssh ])
+      (azure-cli.withExtensions [ azure-cli.extensions.azure-devops azure-cli.extensions.rdbms-connect azure-cli.extensions.bastion azure-cli.extensions.ssh ])
 
       # Desktop (Wayland / Hyprland)
       hyprlock
@@ -100,11 +127,12 @@ in {
       grimblast
 
       # Graphical
-      youtube-music
+      pear-desktop
       unstable.rambox
       signal-desktop
       keepassxc
       pdfarranger
+      brave
     ] ++ builtins.filter pkgs.lib.isDerivation (builtins.attrValues pkgs.nerd-fonts);
 
     file = {
@@ -119,7 +147,8 @@ in {
       ".config/kitty/kitty.conf".source = configSymlink "kitty/kitty.conf";
       ".config/kitty/current-theme.conf".source = configSymlink "kitty/current-theme.conf";
       ".config/kitty/zoom.py".source = configSymlink "kitty/zoom.py";
-      ".config/hypr".source = configSymlink "hypr";
+      ".config/hypr/hyprland.conf".source = configSymlink "hypr/hyprland.conf";
+      ".config/hypr/hyprlock.conf".source = configSymlink "hypr/hyprlock.conf";
       ".config/uwsm/env-hyprland".text = ''
         export HY3_PLUGIN=${pkgs.hyprlandPlugins.hy3}/lib/libhy3.so
       '';
@@ -127,20 +156,6 @@ in {
       ".config/kanshi/config".source = configSymlink "kanshi/config";
       ".config/mako/config".source = configSymlink "mako/config";
       ".config/nvim".source = configSymlink "nvim";
-      # Waiting for the programs.opencode.skills to be available in home-manager 26.05
-      ".config/opencode/skills/caveman".source = (builtins.fetchGit {
-         url = "https://github.com/juliusbrussee/caveman";
-         ref = "main";
-       }) + "/skills/caveman";
-      # Waiting for the programs.opencode.rules to be available in home-manager 26.05
-      ".config/opencode/AGENTS.md".text = ''
-        # Global Instructions
-
-        At the start of every conversation, always invoke the caveman skill:
-        skill({ name: "caveman" })
-
-        Continue using the caveman style for all responses unless explicitly told to stop or use normal mode.
-      '';
 
       ".background-image".source = assetsSymlink "hou-china-6.jpg";
       ".lock.png".source = assetsSymlink "rick_and_morty_lock.png";
@@ -196,36 +211,28 @@ in {
     };
     neovim = {
       enable = true;
+      # Do not handle init.lua file here
+      sideloadInitLua = true;
       defaultEditor = true;
       package = pkgs.unstable.neovim-unwrapped;
-      extraPackages = with pkgs; [
-        # LSP
-        nodePackages.bash-language-server
-        docker-compose-language-service
-        dockerfile-language-server
-        gopls
-        harper
-        jq-lsp
-        vscode-langservers-extracted
-        lua-language-server
-        nginx-language-server
-        python3Packages.python-lsp-server
-        rust-analyzer
-        terraform-ls
-
-        # Treesitter
-        tree-sitter
-      ];
     };
     opencode = {
       enable = true;
       # Will be available in 26-05 version
-      # skills = {
-      #   caveman = (builtins.fetchGit {
-      #     url = "https://github.com/juliusbrussee/caveman";
-      #     ref = "main";
-      #   }) + "/skills/caveman";
-      # };
+      skills = {
+        caveman = (builtins.fetchGit {
+          url = "https://github.com/juliusbrussee/caveman";
+          ref = "main";
+        }) + "/skills/caveman";
+      };
+      context = ''
+        # Global Instructions
+
+        At the start of every conversation, always invoke the caveman skill:
+        skill({ name: "caveman" })
+
+        Continue using the caveman style for all responses unless explicitly told to stop or use normal mode.
+      '';
     };
     obsidian = {
       enable = true;
@@ -237,9 +244,6 @@ in {
       vaults = {
         Second_Brain = {
           target = "vaults/Second Brain";
-          settings = {
-          corePlugins = config.programs.obsidian.defaultSettings.corePlugins ++ [ "sync" ];
-          };
         };
       };
     };
@@ -280,6 +284,19 @@ in {
     blueman-applet.enable = true;
     playerctld.enable = true;
     kanshi.enable = true;
+    hyprpaper = {
+      enable = true;
+      settings = {
+        splash = false;
+        wallpaper = [
+          {
+            # By default/fallback
+            monitor = "";
+            path = "~/.background-image";
+          }
+        ];
+      };
+    };
   };
 
   programs.home-manager.enable = true;
