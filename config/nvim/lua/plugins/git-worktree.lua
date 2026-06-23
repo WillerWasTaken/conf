@@ -24,12 +24,12 @@ return {
               table.insert(choices, name)
             end
           end
-          table.insert(choices, "[Custom]")
+          table.insert(choices, "[New]")
 
-          vim.ui.select(choices, { prompt = "Select branch or [Custom] to enter name: " }, function(choice)
+          vim.ui.select(choices, { prompt = "Select branch or [New] to enter name: " }, function(choice)
             if not choice then return end
 
-            if choice == "[Custom]" then
+            if choice == "[New]" then
               vim.ui.input({ prompt = "Enter branch name: " }, function(input)
                 if input and input ~= "" then
                   git_worktree.create_worktree(input, input, "origin")
