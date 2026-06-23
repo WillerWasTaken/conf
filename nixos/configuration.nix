@@ -26,8 +26,12 @@
   boot = {
     kernelPackages = pkgs.linuxPackages_6_18;
     loader = {
-      systemd-boot = {
-        enable = true;
+      grub = {
+        enable     = true;
+        efiSupport = true;
+        # https://discourse.nixos.org/t/question-about-grub-and-nodev/37867/4
+        device     = "nodev";
+        useOSProber = true;
         configurationLimit = 5;
       };
       efi.canTouchEfiVariables = true;
