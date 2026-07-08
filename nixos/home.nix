@@ -147,10 +147,12 @@ in {
       ".config/kitty/kitty.conf".source = configSymlink "kitty/kitty.conf";
       ".config/kitty/current-theme.conf".source = configSymlink "kitty/current-theme.conf";
       ".config/kitty/zoom.py".source = configSymlink "kitty/zoom.py";
-      ".config/hypr/hyprland.conf".source = configSymlink "hypr/hyprland.conf";
+      ".config/hypr/hyprland.lua".source = configSymlink "hypr/hyprland.lua";
       ".config/hypr/hyprlock.conf".source = configSymlink "hypr/hyprlock.conf";
       ".config/uwsm/env-hyprland".text = ''
         export HY3_PLUGIN=${pkgs.hyprlandPlugins.hy3}/lib/libhy3.so
+        # https://wiki.hypr.land/Configuring/Start/#autocompletions
+        export HYPR_STUBS=${pkgs.hyprland}/share/hypr/stubs
       '';
       ".config/waybar".source = configSymlink "waybar";
       ".config/kanshi/config".source = configSymlink "kanshi/config";

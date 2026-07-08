@@ -26,10 +26,17 @@ return {
       }
     })
 
+    local lua_libraries = vim.api.nvim_get_runtime_file("", true)
+    -- add support for hypr libaries such as hl object
+    local hypr_stubs = vim.env.HYPR_STUBS
+    if hypr_stubs then
+      table.insert(lua_libraries, hypr_stubs)
+    end
+
     vim.lsp.config("lua_ls", {
       settings = {
         Lua = {
-          workspace = { library = vim.api.nvim_get_runtime_file("", true) },
+          workspace = { library = lua_libraries },
         },
       },
     })
