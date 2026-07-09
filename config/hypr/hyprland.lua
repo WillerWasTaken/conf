@@ -201,7 +201,7 @@ hl.bind("XF86AudioStop", hl.dsp.exec_cmd("playerctl stop"))
 hl.bind("PRINT", hl.dsp.exec_cmd("grimblast save area - | swappy -f -"))
 hl.bind(mainMod .. " + PRINT",
   hl.dsp.exec_cmd(
-    "grimblast save area -| tesseract stdin stdout | tr -s '[:space:]\0' ' ' | sed 's/^ *//;s/ *$//' | wl-copy"))
+    "grimblast save area - | tesseract stdin stdout | tr -s '[:space:]\\0' ' ' | sed 's/^ *//;s/ *$//' | wl-copy"))
 
 -- Change focus
 hl.bind(mainMod .. " + H", hy3.move_focus("l"))
