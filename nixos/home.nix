@@ -124,7 +124,6 @@ in {
       pavucontrol
       pamixer
       networkmanagerapplet
-      grimblast
 
       # Graphical
       pear-desktop

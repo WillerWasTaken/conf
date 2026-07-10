@@ -198,10 +198,12 @@ hl.bind("XF86AudioPrev", hl.dsp.exec_cmd("playerctl previous"))
 hl.bind("XF86AudioStop", hl.dsp.exec_cmd("playerctl stop"))
 
 -- Screenshot
-hl.bind("PRINT", hl.dsp.exec_cmd("grimblast save area - | swappy -f -"))
+-- Add sleep as slurps fades out due to the animation and grim catches the artifact
+-- https://github.com/emersion/slurp/issues/84#issuecomment-926730794
+hl.bind("PRINT", hl.dsp.exec_cmd("grim -g \"$(slurp; sleep 0.15)\" - | swappy -f -"))
 hl.bind(mainMod .. " + PRINT",
   hl.dsp.exec_cmd(
-    "grimblast save area - | tesseract stdin stdout | tr -s '[:space:]\\0' ' ' | sed 's/^ *//;s/ *$//' | wl-copy"))
+    "grim -g \"$(slurp; sleep 0.15)\" - | tesseract stdin stdout | tr -s '[:space:]\\0' ' ' | sed 's/^ *//;s/ *$//' | wl-copy"))
 
 -- Change focus
 hl.bind(mainMod .. " + H", hy3.move_focus("l"))
