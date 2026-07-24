@@ -19,10 +19,6 @@ return {
         path = "~/vaults/Second Brain",
       },
     },
-    completion = {
-      blink = true,
-      nvim_cmp = false,
-    },
   },
   config = function(_, opts)
     -- https://github.com/epwalsh/obsidian.nvim/issues/286

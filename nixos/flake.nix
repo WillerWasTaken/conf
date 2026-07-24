@@ -8,9 +8,13 @@
       url = "github:nix-community/home-manager/release-26.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nixgl = {
+      url = "github:nix-community/nixGL";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { self, nixpkgs, ... }@inputs:
+  outputs = { self, nixpkgs, nixgl, ... }@inputs:
     let
       systemConfiguration = {
         nixVersion = "26.05";
@@ -44,7 +48,7 @@
           config.allowUnfree = true;
         };
       };
-      pkgs = import nixpkgs { system = systemConfiguration.system; config.allowUnfree = true; overlays = [ overlay-unstable ]; };
+      pkgs = import nixpkgs { system = systemConfiguration.system; config.allowUnfree = true; overlays = [ overlay-unstable nixgl.overlay ]; };
     in {
       nixosConfigurations.${systemConfiguration.hostname} = nixpkgs.lib.nixosSystem {
         system = systemConfiguration.system;
