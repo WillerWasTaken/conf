@@ -284,7 +284,7 @@ hl.window_rule({
   workspace = "5 silent"
 })
 hl.window_rule({
-  match = { class = "^(obsidian)$" },
+  match = { class = "^(md.Obsidian)$" },
   workspace = "8 silent"
 })
 hl.window_rule({
