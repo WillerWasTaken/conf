@@ -1,3 +1,5 @@
+local git = require("lib.git")
+
 return {
   "nvim-telescope/telescope.nvim",
   dependencies = {
@@ -22,15 +24,12 @@ return {
   },
   keys = function()
     local builtin = require("telescope.builtin")
-    local get_git_root = function()
-      return vim.fn.trim(vim.fn.system("git rev-parse --git-common-dir"))
-    end
     return {
       { "<leader>f", builtin.find_files,                                   desc = "Find files in the current directory" },
       {
         "<leader>gf",
         function()
-          return builtin.find_files({ cwd = get_git_root() })
+          return builtin.find_files({ cwd = git.get_top_level_directory() })
         end,
         desc = "Find files from the git root"
       },
@@ -38,7 +37,7 @@ return {
       {
         "<leader>gF",
         function()
-          return builtin.find_files({ cwd = get_git_root(), hidden = true })
+          return builtin.find_files({ cwd = git.get_top_level_directory(), hidden = true })
         end,
         desc = "Find files including hidden files from the git root"
       },
@@ -46,7 +45,7 @@ return {
       {
         "<leader>gS",
         function()
-          return builtin.live_grep({ cwd = get_git_root() })
+          return builtin.live_grep({ cwd = git.get_top_level_directory() })
         end,
         desc = "Live grep from the git root"
       },

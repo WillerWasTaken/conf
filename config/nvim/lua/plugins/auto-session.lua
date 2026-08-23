@@ -1,3 +1,5 @@
+local git = require("lib.git")
+
 return {
   "rmagatti/auto-session",
   lazy = false,
@@ -20,27 +22,20 @@ return {
     local auto_session = require("auto-session")
     auto_session.setup(opts)
 
-    -- Wrap save_session to handle worktree, to cwd back to bare directory first then restore
+    -- Wrap save_session to handle worktree, to cwd back to top-level directory first then restore
     local original_save = auto_session.save_session
     auto_session.save_session = function(...)
       local cwd = vim.fn.getcwd()
-      local bare_root = nil
+      local git_top_level_directory = git.get_top_level_directory()
 
-      local git_common = vim.fn.trim(vim.fn.system("git rev-parse --git-common-dir"))
-      if vim.v.shell_error == 0 and git_common ~= "." then
-        local is_bare = vim.fn.trim(vim.fn.system(
-          "git -C " .. vim.fn.shellescape(git_common) .. " rev-parse --is-bare-repository"
-        ))
-        if is_bare == "true" then
-          bare_root = git_common
-          vim.g._autosession_worktree = cwd
-          vim.cmd("noautocmd cd " .. vim.fn.fnameescape(bare_root))
-        end
+      if git_top_level_directory then
+        vim.g._autosession_worktree = cwd
+        vim.cmd("noautocmd cd " .. vim.fn.fnameescape(git_top_level_directory))
       end
 
       local result = original_save(...)
 
-      if bare_root then
+      if git_top_level_directory then
         vim.cmd("noautocmd cd " .. vim.fn.fnameescape(cwd))
         vim.g._autosession_worktree = nil
       end

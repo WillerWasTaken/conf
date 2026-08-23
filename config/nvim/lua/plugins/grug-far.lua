@@ -1,3 +1,5 @@
+local git = require("lib.git")
+
 return {
   "MagicDuck/grug-far.nvim",
   -- Available options
@@ -12,19 +14,20 @@ return {
   },
   keys = function()
     local grug_far = require("grug-far")
-    local get_git_root = function()
-      return vim.fn.trim(vim.fn.system("git rev-parse --git-common-dir"))
-    end
     return {
       { "<leader>s", mode = { "n", "x" }, grug_far.open, desc = "Toggle GrugFar" },
-      { "<leader>gs", mode = { "n", "x" },
+      {
+        "<leader>gs",
+        mode = { "n", "x" },
         function()
           return grug_far.open({
             prefills = {
-              paths = get_git_root()
+              paths = git.get_top_level_directory()
             }
           })
-        end, desc = "Toggle GrugFar from the git root" },
+        end,
+        desc = "Toggle GrugFar from the git root"
+      },
     }
   end,
   init = function()
