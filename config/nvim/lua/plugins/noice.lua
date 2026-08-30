@@ -1,6 +1,12 @@
 return {
   "folke/noice.nvim",
   event = "VeryLazy",
+  keys = function()
+    local noice = require("noice")
+    return {
+      { "<leader><Space>", function() noice.cmd("dismiss") end, desc = "Dismiss messges" },
+    }
+  end,
   opts = {
     routes = {
       -- Default configuration ignores shell commands
