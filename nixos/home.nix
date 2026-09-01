@@ -109,6 +109,9 @@ in {
       kubelogin
       (azure-cli.withExtensions [ azure-cli.extensions.azure-devops azure-cli.extensions.rdbms-connect azure-cli.extensions.bastion azure-cli.extensions.ssh ])
 
+      # Security
+      yubikey-manager
+
       # Desktop (Wayland / Hyprland)
       hyprlock
       hypridle
@@ -177,6 +180,12 @@ in {
     git = {
       enable = true;
       package = pkgs.gitFull;
+    };
+    gpg = {
+      enable = true;
+      scdaemonSettings = {
+        disable-ccid = true;
+      };
     };
     kubecolor = {
       enable = true;
@@ -306,6 +315,17 @@ in {
     };
     mako = {
       enable = true;
+    };
+    gpg-agent = {
+      enable = true;
+      enableSshSupport = true;
+      defaultCacheTtl = 30;
+      maxCacheTtl = 60;
+      maxCacheTtlSsh = 60;
+      enableScDaemon = true;
+      pinentry = {
+        package = pkgs.pinentry-qt;
+      };
     };
     podman.enable = true;
     udiskie = {
