@@ -1,0 +1,1 @@
+worktree-path = ".git/.worktrees/{{ branch | sanitize }}"

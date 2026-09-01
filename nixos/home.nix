@@ -61,6 +61,7 @@ in {
       magic-wormhole
       wireguard-tools
       tesseract
+      worktrunk
 
       # database
       dbeaver-bin
@@ -157,6 +158,7 @@ in {
       ".config/kanshi/config".source = configSymlink "kanshi/config";
       ".config/mako/config".source = configSymlink "mako/config";
       ".config/nvim".source = configSymlink "nvim";
+      ".config/worktrunk".source = configSymlink "worktrunk";
 
       ".background-image".source = assetsSymlink "hou-china-6.jpg";
       ".lock.png".source = assetsSymlink "rick_and_morty_lock.png";
