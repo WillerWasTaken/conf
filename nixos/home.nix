@@ -17,7 +17,7 @@ in {
 
   # Not to conflict with hyprland using UWSM
   # https://wiki.hypr.land/Useful-Utilities/Systemd-start/
-  wayland.windowManager.hyprland.systemd.enable = false;
+  # wayland.windowManager.hyprland.systemd.enable = false;
 
   # Configure gtk especially to set iconTheme, e.g pavucontrol using emblem-default not available in default gtk4
   gtk = {
@@ -38,7 +38,12 @@ in {
     stateVersion = nixVersion;
 
     packages = with pkgs; [
-      kitty
+      # kitty
+      (writeShellScriptBin "kitty" ''
+        exec ${nixgl.nixGLIntel}/bin/nixGLIntel ${kitty}/bin/kitty "$@"
+      '')
+      # For zsh completion
+      systemd
       python3
       asdf-vm
       zplug
@@ -107,15 +112,15 @@ in {
       yubikey-manager
 
       # Desktop (Wayland / Hyprland)
-      hyprlock
-      hypridle
-      hyprpaper
-      hyprlandPlugins.hy3
+      # hyprlock
+      # hypridle
+      # hyprpaper
+      # hyprlandPlugins.hy3
       waybar
       libnotify
       brightnessctl
       wdisplays
-      hyprprop
+      # hyprprop
       grim
       slurp
       pavucontrol
@@ -123,11 +128,23 @@ in {
       networkmanagerapplet
 
       # Graphical
-      pear-desktop
-      unstable.rambox
-      signal-desktop
+      # pear-desktop
+      (writeShellScriptBin "pear-desktop" ''
+        exec ${nixgl.nixGLIntel}/bin/nixGLIntel ${pear-desktop}/bin/pear-desktop "$@"
+      '')
+      # https://github.com/NixOS/nixpkgs/issues/121694#issuecomment-2159420924
+      # Disable apparmor
+      (writeShellScriptBin "rambox" ''
+        exec ${nixgl.nixGLIntel}/bin/nixGLIntel ${unstable.rambox}/bin/rambox "$@"
+      '')
+      # unstable.rambox
+      # (config.lib.nixGL.wrap signal-desktop)
+      (writeShellScriptBin "signal-desktop" ''
+        exec ${nixgl.nixGLIntel}/bin/nixGLIntel ${signal-desktop}/bin/signal-desktop "$@"
+      '')
       keepassxc
       pdfarranger
+      netbird-ui
       brave
     ] ++ builtins.filter pkgs.lib.isDerivation (builtins.attrValues pkgs.nerd-fonts);
 
@@ -143,13 +160,15 @@ in {
       ".config/kitty/kitty.conf".source = configSymlink "kitty/kitty.conf";
       ".config/kitty/current-theme.conf".source = configSymlink "kitty/current-theme.conf";
       ".config/kitty/zoom.py".source = configSymlink "kitty/zoom.py";
-      ".config/hypr/hyprland.lua".source = configSymlink "hypr/hyprland.lua";
+      # ".config/hypr/hyprland.lua".source = configSymlink "hypr/hyprland.lua";
       ".config/hypr/hyprlock.conf".source = configSymlink "hypr/hyprlock.conf";
-      ".config/uwsm/env-hyprland".text = ''
-        export HY3_PLUGIN=${pkgs.hyprlandPlugins.hy3}/lib/libhy3.so
-        # https://wiki.hypr.land/Configuring/Start/#autocompletions
-        export HYPR_STUBS=${pkgs.hyprland}/share/hypr/stubs
-      '';
+      ".config/hypr/hypridle.conf".source = configSymlink "hypr/hypridle.conf";
+      # ".config/uwsm/env-hyprland".text = ''
+      #   export HY3_PLUGIN=${pkgs.hyprlandPlugins.hy3}/lib/libhy3.so
+      #   # https://wiki.hypr.land/Configuring/Start/#autocompletions
+      #   export HYPR_STUBS=${pkgs.hyprland}/share/hypr/stubs
+      # '';
+      ".config/sway/config".source = configSymlink "sway/config";
       ".config/waybar".source = configSymlink "waybar";
       ".config/kanshi/config".source = configSymlink "kanshi/config";
       ".config/mako/config".source = configSymlink "mako/config";
@@ -306,6 +325,11 @@ in {
           }
         ];
       };
+    };
+    hypridle = {
+      enable = true;
+      # ConditionEnvironment=WAYLAND_DISPLAY was not met
+      # systemdTarget = "default.target";
     };
     mako = {
       enable = true;
