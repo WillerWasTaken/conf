@@ -115,7 +115,6 @@ in {
       hyprpaper
       hyprlandPlugins.hy3
       waybar
-      mako
       libnotify
       brightnessctl
       wdisplays
@@ -304,6 +303,9 @@ in {
           }
         ];
       };
+    };
+    mako = {
+      enable = true;
     };
     podman.enable = true;
     udiskie = {

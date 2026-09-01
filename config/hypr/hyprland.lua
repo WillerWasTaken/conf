@@ -34,8 +34,6 @@ hl.on("hyprland.start", function()
   hl.exec_cmd("waybar")
   -- Wallpaper
   hl.exec_cmd("hyprpaper")
-  -- Notification
-  hl.exec_cmd("mako")
   --
   -- App
   hl.exec_cmd(terminal .. " --class kitty-startup")
