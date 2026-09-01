@@ -179,6 +179,11 @@ in {
       enable = true;
       package = pkgs.gitFull;
     };
+    kubecolor = {
+      enable = true;
+      enableAlias = true;
+      enableZshIntegration = true;
+    };
     lazygit = {
       enable = true;
       settings = {
