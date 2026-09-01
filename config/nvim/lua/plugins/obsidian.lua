@@ -19,10 +19,10 @@ return {
         path = "~/vaults/Second Brain",
       },
     },
-    completion = {
-      blink = true,
-      nvim_cmp = false,
-    },
+    -- https://github.com/obsidian-nvim/obsidian.nvim/wiki/Checkbox
+    checkbox = {
+      order = { " ", "x" },
+    }
   },
   config = function(_, opts)
     -- https://github.com/epwalsh/obsidian.nvim/issues/286
