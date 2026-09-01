@@ -2,3 +2,14 @@ profile "home" {
   output "eDP-1" mode 2560x1600@165.00000Hz position 0,0 scale 1.00
   output "DP-9" mode 3440x1440@49.95300Hz position 2560,0 scale 1.00
 }
+
+profile "office" {
+  output "eDP-1" mode 1920x1200@60.01Hz position 5120,0 scale 1.0
+  output "DP-8" mode 3840x2160@59.997Hz position 2560,0 scale 1.5
+  output "DP-6" mode 3840x2160@60Hz position 0,0 scale 1.5
+}
+profile "office2" {
+  output "eDP-1" mode 1920x1200@60.01Hz position 5120,0 scale 1.0
+  output "DP-9" mode 3840x2160@59.997Hz position 2560,0 scale 1.5
+  output "DP-6" mode 3840x2160@60Hz position 0,0 scale 1.5
+}

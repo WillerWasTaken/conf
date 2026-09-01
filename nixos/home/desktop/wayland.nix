@@ -18,6 +18,7 @@
       ".config/mako/config".source = configSymlink "mako/config";
 
       ".config/hypr/hyprlock.conf".source = configSymlink "hypr/hyprlock.conf";
+      ".config/hypr/hypridle.conf".source = configSymlink "hypr/hypridle.conf";
       ".lock.png".source = assetsSymlink "rick_and_morty_lock.png";
 
       ".background-image".source = assetsSymlink "hou-china-6.jpg";
