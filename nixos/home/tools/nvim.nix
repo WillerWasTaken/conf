@@ -4,6 +4,7 @@
     packages = with pkgs; [
       # LSP
       bash-language-server
+      cue
       docker-compose-language-service
       dockerfile-language-server
       gopls

@@ -26,6 +26,7 @@
       wget
       dig
       ipcalc
+      mtr
     ];
   };
 
@@ -59,6 +60,8 @@
         skill({ name: "caveman" })
 
         Continue using the caveman style for all responses unless explicitly told to stop or use normal mode.
+        I put a strong emphasis in understanding what I am doing, I value more the understanding rather than the result
+        itself. Avoid jumping to conclusions, consider me as a colleague who needs to be able to do things by himself
       '';
       package = pkgs.unstable.opencode;
     };

@@ -4,6 +4,7 @@ return {
     vim.lsp.enable({
       "rust_analyzer",
       "bashls",
+      "cue",
       "docker_compose_language_service",
       "dockerls",
       "gopls",

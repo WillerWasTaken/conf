@@ -5,6 +5,8 @@
       podman-compose
       dive
 
+      vagrant
+
       terraform
       terraform-docs
     ];

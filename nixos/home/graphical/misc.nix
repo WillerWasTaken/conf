@@ -4,7 +4,9 @@
     packages = with pkgs; [
       pdfarranger
       keepassxc
-      pear-desktop
+      (writeShellScriptBin "pear-desktop" ''
+        exec ${nixgl.nixGLIntel}/bin/nixGLIntel ${pear-desktop}/bin/pear-desktop "$@"
+      '')
     ];
   };
   programs = {
