@@ -66,8 +66,6 @@ in {
       # database
       dbeaver-bin
       postgresql
-      # mssql
-      azuredatastudio
 
       # Devops
       podman-compose
@@ -104,10 +102,6 @@ in {
 
       ## Treesitter
       tree-sitter
-
-      # Azure
-      kubelogin
-      (azure-cli.withExtensions [ azure-cli.extensions.azure-devops azure-cli.extensions.rdbms-connect azure-cli.extensions.bastion azure-cli.extensions.ssh ])
 
       # Security
       yubikey-manager
