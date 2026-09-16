@@ -78,6 +78,7 @@ in {
       kconf
       kubernetes-helm
       kind
+      traceroute
 
       # Language
       cargo
