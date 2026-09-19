@@ -38,6 +38,19 @@
         inherit homeConfiguration;
       };
 
+      homeModule = { config, pkgs, ... }@args: {
+        imports = nixpkgs.lib.filesystem.listFilesRecursive ./home;
+        lib.helpers = with config.lib.helpers; {
+          mkMutableSymlink = dir: path: config.lib.file.mkOutOfStoreSymlink (dir + "/" + path);
+
+          assetsSymlink = mkMutableSymlink homeConfiguration.assetsDir;
+          configSymlink = mkMutableSymlink homeConfiguration.configDir;
+          dotfileSymlink = mkMutableSymlink homeConfiguration.dotfilesDir;
+
+          isNixOS = builtins.hasAttr "nixosConfig" args;
+        };
+      };
+
       overlay-unstable = final: prev: {
         unstable = import inputs.nixpkgs-unstable {
           system = systemConfiguration.system;
@@ -60,7 +73,7 @@
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.users.${homeConfiguration.username} = import ./home.nix;
+            home-manager.users.${homeConfiguration.username} = homeModule;
 
             home-manager.extraSpecialArgs = homeManagerSpecialArgs;
           }
@@ -70,7 +83,7 @@
         inherit pkgs;
         extraSpecialArgs = homeManagerSpecialArgs;
         modules = [
-          ./home.nix
+          homeModule
         ];
       };
     };
