@@ -87,9 +87,9 @@ alias ..='cd ..'
 # Set LS_COLORS
 eval `dircolors`
 alias ls='ls --color'
-alias la='ls --color -la'
-alias l='ls --color -l'
-alias ll='ls --color -l'
+alias la='eza -la'
+alias l='eza'
+alias ll='eza -l'
 alias lg='lazygit'
 alias lgl='lazygit log'
 alias grep='grep --color=auto'

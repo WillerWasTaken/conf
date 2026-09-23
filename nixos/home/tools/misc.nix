@@ -32,6 +32,12 @@
   programs = {
     bat.enable = true;
     direnv.enable = true;
+    eza = {
+      enable = true;
+      colors = "always";
+      icons = "always";
+      git = true;
+    };
     fzf.enable = true;
     btop.enable = true;
     htop.enable = true;
