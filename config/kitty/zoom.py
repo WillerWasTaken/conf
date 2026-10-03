@@ -11,10 +11,10 @@ def update_border(boss: Boss):
     return
   is_stacked = tab.current_layout.name == "stack"
   color = ZOOM_COLOR if is_stacked else NORMAL_COLOR
-  boss.call_remote_control(boss.active_window, (
-    "load-config", "-o",
-    f"draw_window_borders_for_single_window={'yes' if is_stacked else 'no'}"
-  ))
+
+  tab.current_layout.must_draw_borders = is_stacked
+  tab.relayout()
+
   boss.set_colors(f"active_border_color={color}")
 
 
