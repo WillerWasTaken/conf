@@ -108,6 +108,7 @@ alias gcob='git checkout -b'
 alias gitk="gitk --all&"
 alias gk="\gitk --all&"
 alias k=kubectl
+alias kr="k9s --readonly"
 alias tg=terragrunt
 alias tf=terraform
 alias tfd='terraform-docs markdown table --output-file README.md .'
