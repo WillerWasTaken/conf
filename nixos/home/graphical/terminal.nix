@@ -2,7 +2,9 @@
 {
   home = {
     packages = with pkgs; [
-      kitty
+      (writeShellScriptBin "kitty" ''
+        exec ${nixgl.nixGLIntel}/bin/nixGLIntel ${kitty}/bin/kitty "$@"
+      '')
     ];
     file = with config.lib.helpers; {
       ".config/kitty/kitty.conf".source = configSymlink "kitty/kitty.conf";
