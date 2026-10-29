@@ -10,6 +10,7 @@ return {
       "comment",
       "css",
       "csv",
+      "cue",
       "diff",
       "dockerfile",
       "git_config",
