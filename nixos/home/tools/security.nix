@@ -4,7 +4,9 @@
     packages = with pkgs; [
       openssl
       wireguard-tools
+      netbird-ui
       magic-wormhole
+      openbao
 
       yubikey-manager
     ];

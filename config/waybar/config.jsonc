@@ -1,7 +1,8 @@
 {
   // Taken from https://github.com/Alexays/Waybar/wiki/Examples#sephid86s-configuration
   "modules-left": [
-    "hyprland/workspaces"
+    // "hyprland/workspaces"
+    "sway/workspaces"
   ],
   "modules-center": [
     // # Waybar launches immediately, then restarts after 60s to work around
@@ -21,9 +22,25 @@
     "pulseaudio",
     "battery",
     "clock",
-    "tray",
+    // "tray",
     "custom/notification"
   ],
+  "sway/workspaces": {
+    "disable-scroll": true,
+    "all-outputs": true,
+    "warp-on-scroll": false,
+    "format": "{name}: {icon} ",
+    "format-icons": {
+      "1": "",
+      "2": "",
+      "3": "",
+      "4": "",
+      "8": "󱙔",
+      "9": "󰧑",
+      "10": "",
+      "default": ""
+    }
+  },
   "hyprland/workspaces": {
     "disable-scroll": true,
     "all-outputs": true,
@@ -150,9 +167,9 @@
     "on-click": "playerctl play-pause"
   },
   "custom/notification": {
-    "exec": "makoctl mode 2>/dev/null | grep -q do-not-disturb && echo '' || echo ''",
-    "exec-if": "which makoctl",
+    "exec": "/home/willer/.nix-profile/bin/makoctl mode 2>/dev/null | grep -q do-not-disturb && echo '' || echo ''",
+    // "exec-if": "which makoctl",
     "interval": 1,
-    "on-click": "makoctl mode -t do-not-disturb"
+    "on-click": "/home/willer/.nix-profile/bin/makoctl mode -t do-not-disturb"
   }
 }

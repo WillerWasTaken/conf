@@ -2,6 +2,8 @@
 {
   home = {
     packages = with pkgs; [
+      # for systemd autocomplete
+      systemd
       zplug
     ];
 

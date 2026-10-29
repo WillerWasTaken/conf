@@ -13,6 +13,9 @@
   };
 
   services = {
-    podman.enable = true;
+    # Issue with ubuntu
+    # podman = {
+    #   enable = true;
+    # };
   };
 }
