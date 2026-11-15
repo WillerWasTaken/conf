@@ -8,7 +8,29 @@
   imports =
     [ # Include the results of the hardware scan.
       /etc/nixos/hardware-configuration.nix
+      "${builtins.fetchGit { url = "https://github.com/NixOS/nixos-hardware.git"; }}/common/gpu/nvidia/ada-lovelace"
+      "${builtins.fetchGit { url = "https://github.com/NixOS/nixos-hardware.git"; }}/common/gpu/amd"
+      "${builtins.fetchGit { url = "https://github.com/NixOS/nixos-hardware.git"; }}/common/cpu/amd"
     ];
+
+  boot = {
+    kernelParams = [
+      "acpi_backlight=native"
+    ];
+    blacklistedKernelModules = [ "nouveau" ];
+  };
+
+  # NVIDIA driver needed for external display ports (wired to dGPU)
+  services.xserver.videoDrivers = [ "nvidia" ];
+  hardware.nvidia = {
+    modesetting.enable = true;
+    open = false;
+    prime = {
+      reverseSync.enable = true;
+      amdgpuBusId = "PCI:101:0:0";
+      nvidiaBusId = "PCI:100:0:0";
+    };
+  };
 
   # Wayland environment variables
   environment.variables = {
@@ -149,6 +171,14 @@
   programs.thunar.enable = true;
   services.tumbler.enable = true; # Thumbnail support for images in thunar
 
+  # virtualisation.virtualbox.host.enable = true;
+  # virtualisation.virtualbox.host.enableExtensionPack = true;
+  # users.extraGroups.vboxusers.members = [ "willer" ];
+
+  programs.steam = {
+    enable = true;
+  };
+
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
@@ -161,6 +191,58 @@
 
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
+
+  # VPN
+  # programs.yubikey-manager = {
+  #   enable = true;
+  # };
+  # services.strongswan-swanctl = {
+  #   enable = true;
+  #   strongswan.extraConfig = ''
+  #     libstrongswan {
+  #       plugins {
+  #         pkcs11{
+  #           modules {
+  #             opensc {
+  #               path = ${pkgs.opensc}/lib/opensc-pkcs11.so
+  #             }
+  #           }
+  #         }
+  #       }
+  #     }
+  #   '';
+  #   swanctl = {
+  #     connections = {
+  #       VPPR = {
+  #         remote_addrs = ["vppr.services.proxad.net"];
+  #         encap = true;
+
+  #         local."VPPR" = {
+  #           auth = "eap";
+  #         };
+  #         remote."VPPR" = {
+  #           auth = "pubkey";
+  #         };
+  #         children = {
+  #           vppr = {
+  #             start_action = "none";
+  #             esp_proposals = ["aes256-sha512-modp2048"];
+  #           };
+  #         };
+
+  #         proposals = ["aes256-sha256-modp2048"];
+  #         version = 2;
+  #       };
+  #     };
+  #     authorities = {
+  #       isrg = {
+  #         cacert = "${builtins.fetchurl {
+  #           url = https://letsencrypt.org/certs/isrgrootx1.pem.txt;
+  #         }}";
+  #       };
+  #     };
+  #   };
+  # };
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];

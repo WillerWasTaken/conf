@@ -37,9 +37,9 @@
   };
 
   services = {
-    hypridle = {
-      enable = true;
-    };
+    # hypridle = {
+    #   enable = true;
+    # };
     kanshi.enable = true;
     mako = {
       enable = true;
